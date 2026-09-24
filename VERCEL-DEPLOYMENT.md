@@ -16,7 +16,7 @@ The temporary `vercel.app` address has an intentional noindex header. The produc
 
 1. In your Vercel project, open Settings > Domains.
 2. Add `kurda.com` and `www.kurda.com`.
-3. The site uses `https://kurda.com` as its primary address. The included configuration redirects `www.kurda.com` to it. Do not configure an opposite redirect from kurda.com to www.
+3. The site uses `https://kurda.com` as its primary address. The included configuration redirects the `www.kurda.com` homepage to it. Static files remain available on both hostnames so cached pages can load during DNS changes. Do not configure an opposite redirect from kurda.com to www.
 4. Vercel will display the DNS records required for your project. At the company managing your domain's DNS, update the website records to those exact values (typically an A record for the root and a CNAME for www).
 5. Preserve existing email MX records and TXT verification/SPF/DKIM records. Changing nameservers is not necessary for this workflow.
 6. Wait until Vercel reports a valid configuration and HTTPS is ready. Check both addresses, email delivery and phone links before retiring the old hosting.
