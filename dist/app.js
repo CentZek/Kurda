@@ -66,6 +66,23 @@
   window.matchMedia('(min-width: 761px)').addEventListener('change', event => { if (event.matches) setMenu(false); });
   document.querySelector('#year').textContent = new Date().getFullYear();
 
+  // Tall cards scroll fully into view before they pin and the next card overlaps.
+  const serviceStack = document.querySelector('.service-stack');
+  const serviceCards = [...serviceStack.querySelectorAll('.service-card')];
+  const measureServiceCards = () => {
+    serviceCards.forEach(card => {
+      card.style.setProperty('--card-height', `${card.getBoundingClientRect().height}px`);
+    });
+    serviceStack.classList.add('stack-ready');
+  };
+  measureServiceCards();
+  if ('ResizeObserver' in window) {
+    const cardObserver = new ResizeObserver(measureServiceCards);
+    serviceCards.forEach(card => cardObserver.observe(card));
+  }
+  window.addEventListener('resize', measureServiceCards, { passive: true });
+  document.fonts.ready.then(measureServiceCards);
+
   const reveals = [...document.querySelectorAll('.reveal')];
   if ('IntersectionObserver' in window && !reduceMotion.matches) {
     document.documentElement.classList.add('motion');
