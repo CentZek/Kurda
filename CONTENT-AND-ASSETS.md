@@ -47,3 +47,7 @@ Replaced the generic text wordmarks with transparent adaptations of the supplied
 Selected files: `dist/assets/kurda-logo-english.png` and `dist/assets/kurda-logo-kurdish.png`.
 
 Image editing used the built-in image-generation tool. Final prompt set: remove only the white background, retain the original navy lettering/calligraphy and golden sun, preserve their shape and proportions, produce a transparent PNG with clean solid shapes and no added elements. The Kurdish edit used the larger original from the existing website as the explicit edit target.
+
+## Service imagery refresh — 25 September 2026
+
+Replaced the three service-card photographs with AI-generated illustrative service scenes: staffed buffet, an in-flight meal, and packaged meal delivery. These do not represent actual Kurda staff, facilities or clients. See [SERVICE-IMAGERY.md](SERVICE-IMAGERY.md) for the exact files, tool and final prompts. Original photographs remain preserved.

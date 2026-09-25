@@ -177,3 +177,9 @@ h1, h2, h3, p, .fact-value { overflow-wrap:anywhere; }
 @media(prefers-reduced-motion:reduce) {
   .service-stack.stack-ready > .service-card { position:relative; top:auto; box-shadow:none; }
 }
+
+/* Square service photographs keep the meal and its setting in view. */
+.service-card .service-photo { background:#232b2e; }
+.service-card .service-photo img { object-position:50% 50%; }
+.service-card-two .service-photo img { object-position:58% 50%; }
+.service-card-three .service-photo img { object-position:56% 50%; }
