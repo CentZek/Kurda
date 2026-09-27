@@ -59,7 +59,7 @@ html.intro-active .hero-enter { animation-play-state:paused; }
 .wordmark.brand-pair { font:inherit; letter-spacing:normal; line-height:1; }
 .footer-brand.brand-pair { margin-top:0; gap:20px; }
 .footer-brand .logo-english { width:160px; }
-.footer-brand .logo-kurdish { width:49px; }
+.footer-brand .logo-kurdish { width:70px; }
 #intro-title.brand-pair { margin:24px auto 30px; gap:30px; font:inherit; }
 #intro-title .logo-english { width:clamp(170px,25vw,340px); }
 #intro-title .logo-kurdish { width:clamp(56px,8vw,106px); }
@@ -71,10 +71,11 @@ html.intro-active .hero-enter { animation-play-state:paused; }
   .footer-top { grid-template-columns:1.3fr 1fr 1fr; }
   .footer .back-top { grid-column:1/-1; }
   .footer-brand .logo-english { width:135px; }
-  .footer-brand .logo-kurdish { width:42px; }
+  .footer-brand .logo-kurdish { width:64px; }
 }
 @media(max-width:760px) {
   .header .brand-pair { gap:14px; }
+  .footer-brand .logo-kurdish { width:clamp(72px,22vw,96px); }
   .header .logo-english { width:120px; }
   .header .logo-kurdish { width:38px; }
   .header .logo-divider { height:30px; }
