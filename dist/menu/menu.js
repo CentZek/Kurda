@@ -88,22 +88,28 @@
     updateSavedButtons(); animateCards();
   }
   function bringResultsIntoView() {
-    const tools = document.getElementById('menu-tools');
     const target = document.querySelector('.menu-intro').offsetTop + document.querySelector('.menu-intro').offsetHeight;
-    window.scrollTo({top: target, behavior: reducedMotion.matches ? 'instant' : 'smooth'});
+    window.scrollTo({top: target, behavior: reducedMotion.matches || motionPaused ? 'instant' : 'smooth'});
   }
   categories.addEventListener('click', event => {
     const button = event.target.closest('[data-category]'); if (!button) return;
-    category = button.dataset.category; render();
+    search.blur(); category = button.dataset.category; render();
     const railRect = categories.getBoundingClientRect(), buttonRect = button.getBoundingClientRect();
     categories.scrollBy({left: buttonRect.left - railRect.left - (railRect.width-buttonRect.width)/2, behavior: reducedMotion.matches ? 'instant' : 'smooth'});
     bringResultsIntoView();
   });
   search.addEventListener('input', () => {clearTimeout(searchTimer); searchTimer = setTimeout(render, 90);});
-  search.addEventListener('keydown', event => {if (event.key === 'Escape') {search.value = ''; render();}});
+  search.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {clearTimeout(searchTimer); search.value = ''; render();}
+    if (event.key === 'Enter') {
+      event.preventDefault(); clearTimeout(searchTimer); render(); search.blur();
+      // Let the phone keyboard close before aligning the results.
+      setTimeout(bringResultsIntoView, 250);
+    }
+  });
   document.querySelector('.search-clear').addEventListener('click', () => {search.value = ''; render(); search.focus();});
   sort.addEventListener('change', () => {render(); bringResultsIntoView();});
-  savedFilter.addEventListener('click', () => {onlySaved = !onlySaved; category = 'all'; search.value = ''; render(); bringResultsIntoView();});
+  savedFilter.addEventListener('click', () => {search.blur(); onlySaved = !onlySaved; category = 'all'; search.value = ''; render(); bringResultsIntoView();});
   document.getElementById('reset').addEventListener('click', () => {onlySaved = false; category = 'all'; search.value = ''; sort.value = 'menu'; render(); categories.querySelector('button').focus({preventScroll:true}); bringResultsIntoView();});
   results.addEventListener('click', event => {
     const button = event.target.closest('[data-save]'); if (!button) return;
@@ -122,6 +128,13 @@
     document.documentElement.style.setProperty('--tools-height', `${entries[0].target.offsetHeight}px`);
   }).observe(document.getElementById('menu-tools'));
   document.querySelector('.back-top').addEventListener('click', event => {event.preventDefault(); window.scrollTo({top:0,behavior:reducedMotion.matches?'instant':'smooth'}); document.querySelector('.brand').focus({preventScroll:true});});
-  document.addEventListener('visibilitychange', () => {document.querySelectorAll('.hero-sun,.hero-drinks,.ticker>div').forEach(el => {el.style.animationPlayState = document.hidden ? 'paused' : 'running';});});
+  // Suspend decorative animation when the hero is offscreen or the tab is hidden.
+  let heroVisible = true;
+  const decorativeMotion = document.querySelectorAll('.hero-sun,.hero-drinks,.ticker>div,.art-spark');
+  function syncDecorativeMotion() {decorativeMotion.forEach(el => {el.style.animationPlayState = document.hidden || !heroVisible ? 'paused' : 'running';});}
+  document.addEventListener('visibilitychange', syncDecorativeMotion);
+  if ('IntersectionObserver' in window) new IntersectionObserver(entries => {
+    heroVisible = entries[0].isIntersecting; syncDecorativeMotion();
+  }).observe(document.querySelector('.hero-wrap'));
   updateSavedButtons(); animateCards();
 })();

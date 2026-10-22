@@ -12,7 +12,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/menu/assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="/assets/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/menu/menu.css?v=1"><script defer src="/menu/menu.js?v=1"></script>
+  <link rel="stylesheet" href="/menu/menu.css?v=3"><script defer src="/menu/menu.js?v=3"></script>
   <script type="application/ld+json">{{SCHEMA}}</script>
 </head>
 <body id="top">
@@ -55,7 +55,7 @@
  </section>
  <div class="menu-tools" id="menu-tools">
   <div class="tools-top wrap">
-   <label class="search-box"><svg class="icon"><use href="#i-search"/></svg><span class="sr-only">Search the menu</span><input id="search" type="search" placeholder="Find your next favourite…" autocomplete="off" maxlength="100"><button class="search-clear" type="button" aria-label="Clear search" hidden>×</button></label>
+   <div class="search-box"><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg><label class="sr-only" for="search">Search the menu</label><input id="search" type="search" placeholder="Search the menu…" autocomplete="off" autocapitalize="none" spellcheck="false" enterkeyhint="search" maxlength="100"><button class="search-clear" type="button" aria-label="Clear search" hidden>×</button></div>
    <label class="sort-control"><span>Sort by</span><select id="sort"><option value="menu">Menu order</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option><option value="name">Name: A–Z</option></select></label>
    <button id="saved-filter" class="saved-filter" type="button" aria-pressed="false"><svg class="icon"><use href="#i-heart"/></svg><span>My picks</span><b id="saved-count">0</b></button>
   </div>
