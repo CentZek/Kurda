@@ -23,6 +23,13 @@
 /* Phone ergonomics: readable controls, safe areas and no persistent touch hover. */
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .header-menu{min-height:44px}
+.price-on-request{font-size:14px;font-weight:500;white-space:normal}
+.category-nav .category-scroll{padding-right:64px}
+.category-nav .rail-fade{right:44px}
+.category-picker{position:absolute;right:0;top:0;width:44px;height:45px;display:grid;place-items:center;background:var(--cream);border-left:1px solid var(--line);border-radius:4px}
+.category-picker select{position:absolute;inset:0;width:100%;height:100%;opacity:0;font-size:16px;cursor:pointer}
+.category-picker:focus-within{outline:3px solid #a47200;outline-offset:2px}
+.category-picker .icon{width:20px;height:20px}
 .section-heading>div{min-width:0}
 @media(max-width:700px){
   :root{--page-gutter:max(20px,env(safe-area-inset-left),env(safe-area-inset-right))}

@@ -17,7 +17,7 @@ The menu is served from the existing `/menu` directory in the same buildless Ver
 
 ## Menu content and future edits
 
-The authoritative editable data is `dist/menu/menu-data.json`: **53 items, 10 categories**, all prices in **IQD**, transcribed and visually verified against the four pages of the supplied `MENU BOARDS.pdf`.
+The authoritative editable data is `dist/menu/menu-data.json`: **126 items, 24 categories**, with listed prices in **IQD**. The original 53 items come from the four-page `MENU BOARDS.pdf`; 73 bar drinks in 14 categories come from the two-page `MENU - KURDA .pdf`. All new drink names and prices were checked visually and by matching their row positions in the PDF.
 
 Edit names, flavours or prices there, then run:
 
@@ -27,7 +27,7 @@ python scripts/build-menu.py
 
 Commit both the JSON and generated `dist/menu/index.html`, then push to `main`. Vercel deploys the already-built `dist` directory; no Node build or runtime dependencies are needed. Edit the page shell in `menu-source/template.html`, styles in `dist/menu/menu.css` and interactions in `dist/menu/menu.js`.
 
-The full menu is rendered in HTML and remains readable without JavaScript. Search, category filters, price/name sorting and locally saved picks progressively enhance it. Sorting by price uses the lowest **available** listed size. My picks is a shortlist, not an order or payment flow. No invented ingredients, allergens, availability, popularity rankings or extras are added.
+The full menu is rendered in HTML and remains readable without JavaScript. Search, category filters, price/name sorting and locally saved picks progressively enhance it. The Cafe & food and Bar & drinks shortcuts filter the category rail as well as the results. Sorting by price uses the lowest **available** listed size. Items with a null price are shown as "Ask your server", sorted last in both price directions, and omitted from structured-data offers. My picks is a shortlist, not an order or payment flow. No invented ingredients, allergens, availability, popularity rankings or extras are added.
 
 Important source details retained:
 
@@ -35,6 +35,9 @@ Important source details retained:
 - Iced Spanish Latte is **7,500 / 10,500 / 11,500 IQD**.
 - Iced Latte Flavour and Double Shot Iced Shaken Espresso each have a single listed price, without an invented size.
 - All six gifts, including four teddy-bear sizes, are included.
+- 1800 Tequila (4 cl) has no price printed in the bar PDF. It is included with a null price and "Ask your server", as agreed with the user.
+- Bar serving sizes are shown as 4 cl only where the PDF specifies this. No serving volume is invented for beer, cocktails, Irish whiskey, rum or wine.
+- Jameson Caskmates appears separately under cocktails (17,500 IQD) and Irish whiskey (13,500 IQD), exactly as listed.
 
 ## Artwork and performance
 

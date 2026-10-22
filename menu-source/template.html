@@ -2,17 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>Kurda Menu | Coffee, Sandwiches &amp; Little Treats</title>
-  <meta name="description" content="Find your next favourite at Kurda. Explore our full menu of coffees, teas, chocolate, sandwiches, pastries and gifts, with all prices in Iraqi dinars.">
+  <title>Kurda Menu | Coffee, Food &amp; Bar</title>
+  <meta name="description" content="Explore the Kurda menu: coffees, teas, sandwiches, pastries, beer, cocktails, spirits and wine, with prices in Iraqi dinars.">
   <meta name="theme-color" content="#12132f"><link rel="canonical" href="https://www.kurda.com/menu">
   <meta property="og:type" content="website"><meta property="og:title" content="A little pause. A lot to love. | Kurda Menu">
-  <meta property="og:description" content="Coffee, something sweet, or a bite to eat? Explore the whole Kurda menu, with prices in IQD.">
+  <meta property="og:description" content="Coffee, food or a drink from the bar? Explore the whole Kurda menu, with prices in IQD.">
   <meta property="og:url" content="https://www.kurda.com/menu"><meta property="og:image" content="https://www.kurda.com/menu/assets/menu-social.png">
   <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Kurda's illustrated iced coffees and gold sun">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/menu/assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="/assets/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/menu/menu.css?v=3"><script defer src="/menu/menu.js?v=3"></script>
+  <link rel="stylesheet" href="/menu/menu.css?v=4"><script defer src="/menu/menu.js?v=4"></script>
   <script type="application/ld+json">{{SCHEMA}}</script>
 </head>
 <body id="top">
@@ -28,6 +28,10 @@
  <symbol id="i-sandwich" viewBox="0 0 24 24"><path d="M3 11c-2-7 20-7 18 0ZM3 15h18l-2 6H5ZM2 13l4 1 4-1 4 1 4-1 4 1M7 8l1 1m4-2 1 1m4 0 1 1"/></symbol>
  <symbol id="i-pastry" viewBox="0 0 24 24"><path d="m9 4-3 6 2 10h8l2-10-3-6ZM6 9l-4 2 1 7 5 2m10-11 4 2-1 7-5 2M9 4h6M7 11h10"/></symbol>
  <symbol id="i-gift" viewBox="0 0 24 24"><path d="M3 10h18v4H3Zm2 4v8h14v-8M12 10v12m0-12C2 10 3 1 7 3c3 1 5 7 5 7Zm0 0s2-6 5-7c4-2 5 7-5 7Z"/></symbol>
+ <symbol id="i-beer" viewBox="0 0 24 24"><path d="M4 7h12v14H4Zm12 2h3a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-3M7 11v6m5-6v6M4 7C1 3 5 1 7 3c1-3 5-2 6 0 4-1 6 3 3 4"/></symbol>
+ <symbol id="i-spirit" viewBox="0 0 24 24"><path d="M4 5h16l-2 16H6ZM5 12h14m-9-4 4 1-1 4-4-1Z"/></symbol>
+ <symbol id="i-cocktail" viewBox="0 0 24 24"><path d="m3 4 9 10 9-10ZM12 14v7m-5 0h10M7 8h10m-4 0 4-7h4"/></symbol>
+ <symbol id="i-wine" viewBox="0 0 24 24"><path d="M7 2h10l1 7a6 6 0 0 1-12 0ZM6 9h12M12 15v7m-5 0h10"/></symbol>
 </svg>
 <div class="hero-wrap">
  <header class="site-header wrap">
@@ -59,10 +63,10 @@
    <label class="sort-control"><span>Sort by</span><select id="sort"><option value="menu">Menu order</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option><option value="name">Name: A–Z</option></select></label>
    <button id="saved-filter" class="saved-filter" type="button" aria-pressed="false"><svg class="icon"><use href="#i-heart"/></svg><span>My picks</span><b id="saved-count">0</b></button>
   </div>
-  <nav class="category-nav wrap" aria-label="Menu categories"><div class="category-scroll" id="categories">{{CATEGORIES}}</div><div class="rail-fade" aria-hidden="true"></div></nav>
+  <nav class="category-nav wrap" aria-label="Menu categories"><div class="category-scroll" id="categories">{{CATEGORIES}}</div><div class="rail-fade" aria-hidden="true"></div><label class="category-picker" title="Choose a category"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16M4 10h10M4 15h6m4 1 4 4 4-4"/></svg><select id="category-select" aria-label="Choose a category">{{CATEGORY_OPTIONS}}</select></label></nav>
  </div>
  <div class="menu-body wrap">
-  <div class="result-bar"><p id="result-count" role="status" aria-live="polite" aria-atomic="true">53 things to love</p><span>All prices in <strong>IQD</strong></span></div>
+  <div class="result-bar"><p id="result-count" role="status" aria-live="polite" aria-atomic="true">{{TOTAL}} things to love</p><span>All prices in <strong>IQD</strong></span></div>
   <p class="saved-note" id="saved-note" hidden>Your picks are saved on this device. Show them to your server when you’re ready. This does not place an order.</p>
   <div id="results">{{MENU}}</div>
   <div class="empty-state" id="empty-state" hidden><span class="empty-sun" aria-hidden="true">✦</span><h3 id="empty-title">Nothing here just yet.</h3><p id="empty-copy">Try a different name or category.</p><button class="primary-button" id="reset" type="button">Explore the whole menu <svg class="icon"><use href="#i-arrow"/></svg></button></div>

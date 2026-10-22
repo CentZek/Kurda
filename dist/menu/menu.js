@@ -1,4 +1,4 @@
-/* Progressive enhancement: all 53 dishes and prices are already in the HTML. */
+/* Progressive enhancement: the complete menu is already in the HTML. */
 (() => {
   'use strict';
   const data = JSON.parse(document.getElementById('menu-data').textContent);
@@ -7,6 +7,7 @@
   const search = document.getElementById('search');
   const sort = document.getElementById('sort');
   const categories = document.getElementById('categories');
+  const categorySelect = document.getElementById('category-select');
   const savedFilter = document.getElementById('saved-filter');
   const empty = document.getElementById('empty-state');
   const resultCount = document.getElementById('result-count');
@@ -21,7 +22,7 @@
   }
   motionToggle.addEventListener('click', () => {motionPaused = !motionPaused; updateMotion(); try {localStorage.setItem('kurda-menu-motion', motionPaused ? 'paused' : 'playing');} catch {}});
   updateMotion();
-  const items = data.categories.flatMap(category => category.items.map(item => ({...item, category: category.id, categoryName: category.name})));
+  const items = data.categories.flatMap(category => category.items.map(item => ({...item, category: category.id, categoryName: category.name, group: category.group || 'cafe'})));
   const itemMap = new Map(items.map(item => [item.id, item]));
   const templates = new Map([...results.querySelectorAll('[data-item]')].map(card => [card.dataset.item, card.outerHTML]));
   let category = 'all', onlySaved = false, searchTimer, toastTimer;
@@ -31,7 +32,13 @@
     if (Array.isArray(stored)) saved = new Set(stored.filter(id => itemMap.has(id)));
   } catch { /* Browsing remains available when storage is restricted. */ }
   const normalize = value => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
-  const minimum = item => Math.min(...Object.values(item.prices));
+  const minimum = item => {const prices = Object.values(item.prices).filter(Number.isFinite); return prices.length ? Math.min(...prices) : null;};
+  function comparePrice(a, b) {
+    const left = minimum(a), right = minimum(b);
+    if (left === null) return right === null ? 0 : 1;
+    if (right === null) return -1;
+    return sort.value === 'low' ? left-right : right-left;
+  }
   let observer;
   if ('IntersectionObserver' in window) observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -57,18 +64,18 @@
   }
   function render() {
     const query = normalize(search.value.trim());
-    const matching = items.filter(item => (category === 'all' || item.category === category) && (!onlySaved || saved.has(item.id)) && (!query || normalize([item.name, item.categoryName, ...(item.flavours || [])].join(' ')).includes(query)));
+    const matching = items.filter(item => (category === 'all' || item.category === category || item.group === category) && (!onlySaved || saved.has(item.id)) && (!query || normalize([item.name, item.categoryName, ...(item.flavours || [])].join(' ')).includes(query)));
     const matchIds = new Set(matching.map(item => item.id));
     if (sort.value === 'menu') {
       results.innerHTML = initial;
       results.querySelectorAll('[data-item]').forEach(card => {if (!matchIds.has(card.dataset.item)) card.remove();});
       results.querySelectorAll('[data-section]').forEach(section => {if (!section.querySelector('[data-item]')) section.remove();});
     } else {
-      matching.sort(sort.value === 'name' ? (a,b) => a.name.localeCompare(b.name) : sort.value === 'low' ? (a,b) => minimum(a)-minimum(b) : (a,b) => minimum(b)-minimum(a));
+      matching.sort(sort.value === 'name' ? (a,b) => a.name.localeCompare(b.name) : comparePrice);
       const heading = document.createElement('div');
       heading.className = 'sorted-heading';
       const title = document.createElement('h3');
-      title.textContent = onlySaved ? 'Your picks' : category === 'all' ? 'The whole menu' : data.categories.find(cat => cat.id === category).name;
+      title.textContent = onlySaved ? 'Your picks' : category === 'all' ? 'The whole menu' : category === 'bar' ? 'Bar & drinks' : category === 'cafe' ? 'Café & food' : data.categories.find(cat => cat.id === category).name;
       heading.append(title);
       if (sort.value !== 'name') {const hint = document.createElement('p'); hint.textContent = 'Sorted by lowest available size price'; heading.append(hint);}
       results.replaceChildren(heading);
@@ -80,11 +87,17 @@
     document.getElementById('empty-title').textContent = onlySaved && saved.size === 0 ? 'Your favourites start here.' : 'No matches just yet.';
     document.getElementById('empty-copy').textContent = onlySaved && saved.size === 0 ? 'Tap the heart beside anything you love. Your picks will be waiting here.' : 'Try another search, or explore the whole menu.';
     const label = onlySaved ? 'saved pick' : 'item';
-    resultCount.textContent = matching.length === 53 && !onlySaved && !query && category === 'all' ? '53 things to love' : `${matching.length} ${label}${matching.length === 1 ? '' : 's'}${query ? ' matching your search' : ''}`;
+    resultCount.textContent = matching.length === items.length && !onlySaved && !query && category === 'all' ? `${items.length} things to love` : `${matching.length} ${label}${matching.length === 1 ? '' : 's'}${query ? ' matching your search' : ''}`;
     document.querySelector('.search-clear').hidden = !search.value;
     document.getElementById('saved-note').hidden = !onlySaved || saved.size === 0;
     savedFilter.setAttribute('aria-pressed', String(onlySaved));
-    categories.querySelectorAll('[data-category]').forEach(button => {const active = button.dataset.category === category; button.classList.toggle('active', active); button.setAttribute('aria-pressed', String(active));});
+    const group = category === 'all' ? null : ['bar','cafe'].includes(category) ? category : data.categories.find(cat => cat.id === category)?.group || 'cafe';
+    categorySelect.value = category;
+    categories.querySelectorAll('[data-category]').forEach(button => {
+      const active = button.dataset.category === category;
+      button.classList.toggle('active', active); button.setAttribute('aria-pressed', String(active));
+      button.hidden = Boolean(group && button.dataset.group && button.dataset.group !== group);
+    });
     updateSavedButtons(); animateCards();
   }
   function bringResultsIntoView() {
@@ -96,6 +109,13 @@
     search.blur(); category = button.dataset.category; render();
     const railRect = categories.getBoundingClientRect(), buttonRect = button.getBoundingClientRect();
     categories.scrollBy({left: buttonRect.left - railRect.left - (railRect.width-buttonRect.width)/2, behavior: reducedMotion.matches ? 'instant' : 'smooth'});
+    bringResultsIntoView();
+  });
+  categorySelect.addEventListener('change', () => {
+    search.blur(); category = categorySelect.value; render();
+    const button = categories.querySelector(`[data-category="${category}"]`);
+    const railRect = categories.getBoundingClientRect(), buttonRect = button.getBoundingClientRect();
+    categories.scrollBy({left: buttonRect.left-railRect.left-(railRect.width-buttonRect.width)/2, behavior:'instant'});
     bringResultsIntoView();
   });
   search.addEventListener('input', () => {clearTimeout(searchTimer); searchTimer = setTimeout(render, 90);});
