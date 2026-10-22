@@ -31,7 +31,7 @@ for n, cat in enumerate(data['categories'], 1):
     sections.append(f'''<section class="menu-section" data-section="{cat['id']}" aria-labelledby="heading-{cat['id']}"><div class="section-heading"><span class="section-number">{n:02}</span><div><p class="eyebrow">{escape(cat['eyebrow'])}</p><h3 id="heading-{cat['id']}">{escape(cat['name'])}</h3><p>{escape(cat['description'])}</p></div>{decoration}</div><div class="card-grid">{''.join(cards)}</div></section>''')
     schema_sections.append({'@type': 'MenuSection', 'name': cat['name'], 'hasMenuItem': schema_items})
 assert len(ids) == 53
-schema = {'@context': 'https://schema.org', '@type': 'Menu', 'name': 'Kurda Menu', 'url': 'https://menu.kurda.com/', 'inLanguage': 'en', 'hasMenuSection': schema_sections}
+schema = {'@context': 'https://schema.org', '@type': 'Menu', 'name': 'Kurda Menu', 'url': 'https://www.kurda.com/menu', 'inLanguage': 'en', 'hasMenuSection': schema_sections}
 text = (ROOT / 'menu-source/template.html').read_text(encoding='utf-8')
 for key, value in {'MENU': ''.join(sections), 'CATEGORIES': ''.join(tabs), 'DATA': json.dumps(data, ensure_ascii=False).replace('<', '\\u003c'), 'SCHEMA': json.dumps(schema, ensure_ascii=False), 'TICKER': '<span>COFFEE &amp; CONVERSATION <b>✦</b> A BITE TO SAVOUR <b>✦</b> SOMETHING SWEET <b>✦</b> A LITTLE KURDA MOMENT <b>✦</b></span>'}.items():
     text = text.replace('{{' + key + '}}', value)

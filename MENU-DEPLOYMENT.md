@@ -1,36 +1,19 @@
 # Kurda table menu
 
-## Open the menu
+## Permanent address and QR code
 
-- Published preview path on the existing production site: `https://kurda.com/menu/`
-- Intended permanent table-menu address: `https://menu.kurda.com/`
-- Printable A6 table card: `https://kurda.com/menu/qr/table-card.html`
-- Standalone QR files: `/menu/qr/kurda-menu-qr.svg` and `/menu/qr/kurda-menu-qr.png`
+The permanent menu address is **https://www.kurda.com/menu**. It uses the existing website and needs no additional Vercel domain or DNS setup.
 
-The QR encodes **https://menu.kurda.com/**. Confirm that address works over HTTPS on a phone before printing cards for customers. The QR remains the same when prices or dishes change.
+- Menu: `https://www.kurda.com/menu`
+- Printable A6 table card: `https://www.kurda.com/menu/qr/table-card.html`
+- QR PNG: `https://www.kurda.com/menu/qr/kurda-menu-qr.png?v=2`
+- QR SVG: `https://www.kurda.com/menu/qr/kurda-menu-qr.svg?v=2`
 
-## Connect menu.kurda.com
-
-1. Open the existing **Kurda** project in Vercel, then **Settings → Domains**.
-2. Add **menu.kurda.com** to **Production**. Do not choose a redirect to the main website.
-3. Copy the exact CNAME target shown by Vercel for this subdomain.
-4. In the existing DNS provider / cPanel Zone Editor for `kurda.com`, add one record:
-
-   | Type | Name | Target | TTL |
-   | --- | --- | --- | --- |
-   | CNAME | `menu` (or `menu.kurda.com.` if the editor expects a full name) | Exact target Vercel displays | `300`, if supported |
-
-5. Wait for Vercel to report **Valid Configuration**, then open `https://menu.kurda.com/` on a phone and check categories, images and prices.
-
-Do not change nameservers, apex/www, mail records, or any other subdomain. Existing POS, inventory and other applications keep their own DNS records. Keep the current DNS/mail hosting active.
-
-If `menu` already has a record, inspect it first instead of creating a conflicting CNAME. As checked during implementation on 22 October 2026, `menu.kurda.com` did not resolve publicly. Domain attachment and DNS changes still require dashboard access; publishing the code does not create DNS records.
+Both QR files encode exactly **https://www.kurda.com/menu**. Use these updated files instead of the earlier subdomain QR. The QR stays the same when prices or dishes change.
 
 ## Routing
 
-This remains a single buildless Vercel project. Explicit ordered routes in `vercel.json` send only `menu.kurda.com/`, its robots file, and its sitemap to the menu files **before** the filesystem phase. This avoids the existing root `index.html` winning over the subdomain route. The original homepage and its assets are unchanged. Existing security/cache headers, www redirect, legacy index redirects and preview noindex headers are retained.
-
-References: [Vercel domain setup](https://vercel.com/docs/domains/working-with-domains/add-a-domain), [host-based routing](https://vercel.com/kb/guide/can-i-redirect-from-a-subdomain-to-a-subpath), [route configuration](https://vercel.com/docs/project-configuration/vercel-json).
+The menu is served from the existing `/menu` directory in the same buildless Vercel project. No subdomain is required. The unused subdomain-specific routes have been removed; the existing homepage, redirects, security and cache headers remain in place. Canonical, social sharing and structured-data URLs all use the permanent menu address. The main robots file references the menu sitemap.
 
 ## Menu content and future edits
 

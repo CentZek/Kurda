@@ -68,36 +68,6 @@
       "status": 308
     },
     {
-      "src": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "menu.kurda.com"
-        }
-      ],
-      "dest": "/menu/index.html"
-    },
-    {
-      "src": "/robots\\.txt",
-      "has": [
-        {
-          "type": "host",
-          "value": "menu.kurda.com"
-        }
-      ],
-      "dest": "/menu/robots.txt"
-    },
-    {
-      "src": "/sitemap\\.xml",
-      "has": [
-        {
-          "type": "host",
-          "value": "menu.kurda.com"
-        }
-      ],
-      "dest": "/menu/sitemap.xml"
-    },
-    {
       "handle": "filesystem"
     },
     {

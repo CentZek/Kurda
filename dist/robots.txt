@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://kurda.com/sitemap.xml
+Sitemap: https://www.kurda.com/menu/sitemap.xml
