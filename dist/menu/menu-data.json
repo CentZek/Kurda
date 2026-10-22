@@ -1,0 +1,78 @@
+{
+  "currency": "IQD",
+  "categories": [
+    {"id":"hot-coffee","name":"Hot coffees","eyebrow":"A warm beginning","description":"Espresso moments. Long conversations.","icon":"coffee","items":[
+      {"id":"espresso-single","name":"Espresso single shot","prices":{"":3500}},
+      {"id":"espresso-double","name":"Espresso double shot","prices":{"":4500}},
+      {"id":"macchiato-single","name":"Espresso macchiato single","prices":{"":4500}},
+      {"id":"macchiato-double","name":"Espresso macchiato double","prices":{"":6250}},
+      {"id":"americano","name":"Cafe Americano","prices":{"Small":4500,"Medium":5500,"Large":6500}},
+      {"id":"latte","name":"Cafe Latte","prices":{"Small":4500,"Medium":5500,"Large":6500}},
+      {"id":"cappuccino","name":"Cappuccino","prices":{"Small":4500,"Medium":5500,"Large":6500}},
+      {"id":"latte-macchiato","name":"Cafe Latte Macchiato","prices":{"Small":4500,"Medium":5500,"Large":6500}},
+      {"id":"caramel-macchiato","name":"Caramel Macchiato","prices":{"Small":5000,"Medium":6000,"Large":7000}},
+      {"id":"mocha","name":"Cafe Mocha","prices":{"Small":5000,"Medium":6000,"Large":7000}},
+      {"id":"white-mocha","name":"White Mocha","prices":{"Medium":5000,"Large":6000}},
+      {"id":"flat-white","name":"Flat White","prices":{"":5500}},
+      {"id":"turkish-coffee","name":"Turkish Coffee","prices":{"":3000}}
+    ]},
+    {"id":"iced-coffee","name":"Iced coffees","eyebrow":"Keep it cool","description":"Your coffee break, on ice.","icon":"iced","items":[
+      {"id":"iced-americano","name":"Iced Americano","prices":{"Small":5000,"Medium":6000,"Large":7000}},
+      {"id":"iced-latte","name":"Iced Latte","prices":{"Small":5500,"Medium":6500,"Large":7500}},
+      {"id":"iced-mocha","name":"Iced Mocha","prices":{"Small":5500,"Medium":6500,"Large":7500}},
+      {"id":"iced-white-mocha","name":"Iced White Mocha","prices":{"Small":5500,"Medium":6500,"Large":7500}},
+      {"id":"iced-spanish-latte","name":"Iced Spanish Latte","prices":{"Small":7500,"Medium":10500,"Large":11500}},
+      {"id":"iced-latte-flavour","name":"Iced Latte Flavour","flavours":["Vanilla","Hazelnut","Caramel"],"prices":{"":5500}},
+      {"id":"shaken-espresso","name":"Double Shot Iced Shaken Espresso","prices":{"":6250}}
+    ]},
+    {"id":"tea","name":"Hot teas","eyebrow":"Take your time","description":"A familiar comfort, one cup at a time.","icon":"tea","items":[
+      {"id":"classic-tea","name":"Classic Tea","prices":{"Small":1500,"Medium":2000,"Large":2500}},
+      {"id":"green-tea","name":"Green Tea","prices":{"Small":1500,"Medium":2000,"Large":2500}},
+      {"id":"iraqi-tea","name":"Iraqi Tea","prices":{"Small":1500,"Medium":2000,"Large":2500}}
+    ]},
+    {"id":"chai","name":"Chai latte","eyebrow":"A cosy little ritual","description":"Spice or vanilla. Make it your moment.","icon":"coffee","items":[
+      {"id":"spicy-chai","name":"Spicy Chai Latte","prices":{"Small":3000,"Medium":3500,"Large":4500}},
+      {"id":"vanilla-chai","name":"Vanilla Chai Latte","prices":{"Small":3500,"Medium":4500,"Large":5500}}
+    ]},
+    {"id":"hot-chocolate","name":"Hot chocolate","eyebrow":"A cup of comfort","description":"For the chocolate kind of day.","icon":"coffee","items":[
+      {"id":"hot-chocolate","name":"Hot Chocolate","prices":{"Small":4500,"Medium":5500,"Large":6500}},
+      {"id":"white-hot-chocolate","name":"White Hot Chocolate","prices":{"Small":4500,"Medium":5500,"Large":6500}},
+      {"id":"dark-chocolate","name":"Dark Chocolate","prices":{"Small":4500,"Medium":5500,"Large":6500}}
+    ]},
+    {"id":"iced-chocolate","name":"Iced chocolate","eyebrow":"Chocolate, chilled","description":"A cool twist on a little indulgence.","icon":"iced","items":[
+      {"id":"chocolate-malt","name":"Iced Chocolate Malt","prices":{"Small":5000,"Medium":6000,"Large":7000}},
+      {"id":"vanilla-chocolate","name":"Iced Vanilla Chocolate","prices":{"Small":5000,"Medium":6000,"Large":7000}},
+      {"id":"hazelnut-chocolate","name":"Iced Hazelnut Chocolate","prices":{"Small":5000,"Medium":6000,"Large":7000}},
+      {"id":"iced-dark-chocolate","name":"Iced Dark Chocolate","prices":{"Small":5000,"Medium":6000,"Large":7000}}
+    ]},
+    {"id":"frappe","name":"Blended frappé","eyebrow":"A happy little blend","description":"Something sweet. Something chilled.","icon":"iced","items":[
+      {"id":"creme-frappe","name":"Crème Frappé","flavours":["Vanilla","Hazelnut","Caramel"],"prices":{"":7000}},
+      {"id":"dark-frappe","name":"Dark Chocolate Frappé","prices":{"":7000}},
+      {"id":"white-frappe","name":"White Chocolate Frappé","prices":{"":7000}}
+    ]},
+    {"id":"sandwiches","name":"Sandwiches","eyebrow":"Stay for a bite","description":"A little more than a coffee break.","icon":"sandwich","items":[
+      {"id":"chicken-steak","name":"Chicken Steak Sandwich","prices":{"":6000}},
+      {"id":"tanduri-chicken","name":"Tanduri Chicken Sandwich","prices":{"":6000}},
+      {"id":"grilled-chicken","name":"Grilled Chicken Sandwich","prices":{"":6000}},
+      {"id":"beef-fajita","name":"Beef Fajita Sandwich","prices":{"":6000}},
+      {"id":"beef-steak","name":"Beef Steak Sandwich","prices":{"":6000}},
+      {"id":"halloumi","name":"Halloumi Sandwich","prices":{"":4500}}
+    ]},
+    {"id":"pastries","name":"Pastries","eyebrow":"The sweetest company","description":"Find a little something for your cup.","icon":"pastry","items":[
+      {"id":"plain-croissant","name":"Plain Croissant","prices":{"":3000}},
+      {"id":"cheese-croissant","name":"Cheese Croissant","prices":{"":4000}},
+      {"id":"chocolate-croissant","name":"Chocolate Croissant","prices":{"":4000}},
+      {"id":"cake","name":"Assorted Cake","prices":{"":4500}},
+      {"id":"muffins","name":"Muffins","flavours":["Chocolate","Vanilla","Blueberry"],"prices":{"":3750}},
+      {"id":"cupcakes","name":"Cupcakes","flavours":["Vanilla","Chocolate"],"prices":{"":1750}}
+    ]},
+    {"id":"gifts","name":"Gifts","eyebrow":"A little thought goes a long way","description":"Flowers, bears and a reason to smile.","icon":"gift","items":[
+      {"id":"bear-small","name":"Teddy Bear Small","prices":{"":7000}},
+      {"id":"bear-medium","name":"Teddy Bear Medium","prices":{"":15000}},
+      {"id":"bear-large","name":"Teddy Bear Large","prices":{"":25000}},
+      {"id":"bear-xl","name":"Teddy Bear Extra Large","prices":{"":32500}},
+      {"id":"flower-single","name":"Flower Single","prices":{"":5000}},
+      {"id":"flower-bouquet","name":"Flower Bouquet","prices":{"":12000}}
+    ]}
+  ]
+}

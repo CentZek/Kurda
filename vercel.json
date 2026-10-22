@@ -4,66 +4,106 @@
   "buildCommand": "",
   "installCommand": "",
   "outputDirectory": "dist",
-  "redirects": [
+  "routes": [
     {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.kurda.com"
-        }
-      ],
-      "destination": "https://kurda.com/",
-      "permanent": true
+      "src": "/(.*)",
+      "headers": {
+        "X-Content-Type-Options": "nosniff",
+        "Referrer-Policy": "strict-origin-when-cross-origin"
+      },
+      "continue": true
     },
     {
-      "source": "/index.html",
-      "destination": "/",
-      "permanent": true
+      "src": "/assets/(.*)",
+      "headers": {
+        "Cache-Control": "public, max-age=86400, stale-while-revalidate=86400"
+      },
+      "continue": true
     },
     {
-      "source": "/index.php",
-      "destination": "/",
-      "permanent": true
-    }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        }
-      ]
-    },
-    {
-      "source": "/assets/:path*",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=86400, stale-while-revalidate=86400"
-        }
-      ]
-    },
-    {
-      "source": "/(.*)",
+      "src": "/(.*)",
+      "headers": {
+        "X-Robots-Tag": "noindex, follow"
+      },
+      "continue": true,
       "has": [
         {
           "type": "host",
           "value": ".*\\.vercel\\.app"
         }
-      ],
-      "headers": [
+      ]
+    },
+    {
+      "src": "/menu/assets/(.*)",
+      "headers": {
+        "Cache-Control": "public, max-age=86400, stale-while-revalidate=86400"
+      },
+      "continue": true
+    },
+    {
+      "src": "/",
+      "headers": {
+        "Location": "https://kurda.com/"
+      },
+      "status": 308,
+      "has": [
         {
-          "key": "X-Robots-Tag",
-          "value": "noindex, follow"
+          "type": "host",
+          "value": "www.kurda.com"
         }
       ]
+    },
+    {
+      "src": "/index\\.html",
+      "headers": {
+        "Location": "/"
+      },
+      "status": 308
+    },
+    {
+      "src": "/index\\.php",
+      "headers": {
+        "Location": "/"
+      },
+      "status": 308
+    },
+    {
+      "src": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "menu.kurda.com"
+        }
+      ],
+      "dest": "/menu/index.html"
+    },
+    {
+      "src": "/robots\\.txt",
+      "has": [
+        {
+          "type": "host",
+          "value": "menu.kurda.com"
+        }
+      ],
+      "dest": "/menu/robots.txt"
+    },
+    {
+      "src": "/sitemap\\.xml",
+      "has": [
+        {
+          "type": "host",
+          "value": "menu.kurda.com"
+        }
+      ],
+      "dest": "/menu/sitemap.xml"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "status": 404,
+      "dest": "/404.html"
     }
   ]
 }
