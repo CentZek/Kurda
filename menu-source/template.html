@@ -1,82 +1,45 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{LANG}}" dir="{{DIR}}">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>Kurda Menu | Coffee, Food &amp; Bar</title>
-  <meta name="description" content="Explore the Kurda menu: coffees, teas, sandwiches, pastries, beer, cocktails, spirits and wine, with prices in Iraqi dinars.">
-  <meta name="theme-color" content="#12132f"><link rel="canonical" href="https://www.kurda.com/menu">
-  <meta property="og:type" content="website"><meta property="og:title" content="A little pause. A lot to love. | Kurda Menu">
-  <meta property="og:description" content="Coffee, food or a drink from the bar? Explore the whole Kurda menu, with prices in IQD.">
-  <meta property="og:url" content="https://www.kurda.com/menu"><meta property="og:image" content="https://www.kurda.com/menu/assets/menu-social.png">
-  <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Kurda's illustrated iced coffees and gold sun">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="/menu/assets/favicon.svg" type="image/svg+xml">
-  <link rel="preload" href="/assets/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/menu/menu.css?v=4"><script defer src="/menu/menu.js?v=4"></script>
-  <script type="application/ld+json">{{SCHEMA}}</script>
+ <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+ <title>{{title}}</title><meta name="description" content="{{description}}">
+ <meta name="theme-color" content="#f7f3e9"><link rel="canonical" href="{{URL}}">
+ <link rel="alternate" hreflang="en" href="https://www.kurda.com/menu"><link rel="alternate" hreflang="ckb" href="https://www.kurda.com/menu/ckb/"><link rel="alternate" hreflang="ar" href="https://www.kurda.com/menu/ar/"><link rel="alternate" hreflang="x-default" href="https://www.kurda.com/menu">
+ <meta property="og:type" content="website"><meta property="og:title" content="{{title}}"><meta property="og:description" content="{{description}}"><meta property="og:url" content="{{URL}}"><meta property="og:image" content="https://www.kurda.com/menu/assets/menu-social.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">
+ <link rel="icon" href="/menu/assets/favicon.svg" type="image/svg+xml">
+ <link rel="preload" href="/assets/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+ <link rel="stylesheet" href="/menu/menu.css?v=5"><script defer src="/menu/menu.js?v=5"></script>
+ <script type="application/ld+json">{{SCHEMA}}</script>
 </head>
 <body id="top">
-<a class="skip" href="#menu">Skip to menu</a>
-<svg class="svg-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
- <defs><filter id="brand-on-dark" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 1  -.25 0 0 0 .995  -.985 0 0 0 .99  0 0 0 1 0"/></filter></defs>
- <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
- <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0l-1 1-1-1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></symbol>
- <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="7.3"/><path d="m16 16 5 5"/></symbol>
- <symbol id="i-coffee" viewBox="0 0 24 24"><path d="M4 8h13v7a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5Zm13 1h2a3 3 0 0 1 0 6h-2M7 2v3m5-3v3M2 23h18"/></symbol>
- <symbol id="i-iced" viewBox="0 0 24 24"><path d="m4 7 2 15h12l2-15ZM3 7h18M12 7l3-6h4M8 13l3 2m2-3 3 2"/></symbol>
- <symbol id="i-tea" viewBox="0 0 24 24"><path d="M6 4h12c-3 5-3 7-1 11 2 5-12 5-10 0 2-4 2-6-1-11Zm2 7h8M3 22h18M10 1h4"/></symbol>
- <symbol id="i-sandwich" viewBox="0 0 24 24"><path d="M3 11c-2-7 20-7 18 0ZM3 15h18l-2 6H5ZM2 13l4 1 4-1 4 1 4-1 4 1M7 8l1 1m4-2 1 1m4 0 1 1"/></symbol>
- <symbol id="i-pastry" viewBox="0 0 24 24"><path d="m9 4-3 6 2 10h8l2-10-3-6ZM6 9l-4 2 1 7 5 2m10-11 4 2-1 7-5 2M9 4h6M7 11h10"/></symbol>
- <symbol id="i-gift" viewBox="0 0 24 24"><path d="M3 10h18v4H3Zm2 4v8h14v-8M12 10v12m0-12C2 10 3 1 7 3c3 1 5 7 5 7Zm0 0s2-6 5-7c4-2 5 7-5 7Z"/></symbol>
- <symbol id="i-beer" viewBox="0 0 24 24"><path d="M4 7h12v14H4Zm12 2h3a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-3M7 11v6m5-6v6M4 7C1 3 5 1 7 3c1-3 5-2 6 0 4-1 6 3 3 4"/></symbol>
- <symbol id="i-spirit" viewBox="0 0 24 24"><path d="M4 5h16l-2 16H6ZM5 12h14m-9-4 4 1-1 4-4-1Z"/></symbol>
- <symbol id="i-cocktail" viewBox="0 0 24 24"><path d="m3 4 9 10 9-10ZM12 14v7m-5 0h10M7 8h10m-4 0 4-7h4"/></symbol>
- <symbol id="i-wine" viewBox="0 0 24 24"><path d="M7 2h10l1 7a6 6 0 0 1-12 0ZM6 9h12M12 15v7m-5 0h10"/></symbol>
-</svg>
-<div class="hero-wrap">
+ <a class="skip" href="#menu">{{skip}}</a>{{ICONS}}
  <header class="site-header wrap">
-  <a href="https://kurda.com/" class="brand" aria-label="Kurda main website"><img src="/assets/kurda-logo-english.png" width="800" height="342" alt="Kurda"><span></span><img class="kurdish" src="/assets/kurda-logo-kurdish.png" width="360" height="460" alt="Kurda in Kurdish"></a>
-  <span class="header-note">GOOD COMPANY. GREAT TASTE.</span>
-  <a class="header-menu" href="#menu">The menu <svg class="icon"><use href="#i-arrow"/></svg></a>
+  <a class="brand" href="https://kurda.com/" aria-label="{{home}}"><img src="/assets/kurda-logo-english.png" width="800" height="342" alt="Kurda"><img class="kurdish-logo" src="/assets/kurda-logo-kurdish.png" width="360" height="460" alt="کوردا"></a>
+  <nav class="languages" aria-label="{{language}}">{{LANGUAGES}}</nav>
  </header>
- <section class="hero wrap" aria-labelledby="welcome-title">
-  <div class="hero-copy"><p class="eyebrow"><span class="tiny-sun">✦</span> WELCOME TO YOUR KURDA MOMENT</p>
-   <h1 id="welcome-title">A little pause.<br>A lot to <em>love.</em></h1>
-   <p class="hero-description">Your favourite cup. A bite to savour.<br>A warm welcome, always.</p>
-   <a class="primary-button" href="#menu">Find your favourite <svg class="icon"><use href="#i-arrow"/></svg></a>
-   <button class="motion-toggle" id="motion-toggle" type="button" aria-pressed="false"><span aria-hidden="true">Ⅱ</span> <span id="motion-label">Pause motion</span></button>
-   <span class="hero-footnote">Take a look. Take your time.</span>
+ <main>
+  <section class="welcome wrap" aria-labelledby="welcome-title">
+   <div class="welcome-heading"><div><p class="eyebrow">{{welcome}}</p><h1 id="welcome-title">{{heading}}</h1></div><img class="welcome-sun" src="/menu/assets/sun.svg" alt="" width="64" height="64"></div>
+   <div class="group-cards">{{GROUP_CARDS}}</div>
+  </section>
+  <div class="menu-dock" id="menu">
+   <div class="wrap dock-inner">
+    <nav class="group-tabs" aria-label="{{browse}}">{{GROUP_TABS}}</nav>
+    <div class="search-row js-only"><form role="search" id="search-form"><label class="sr-only" for="search">{{search}}</label><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg><input id="search" type="search" placeholder="{{search}}" enterkeyhint="search" autocomplete="off"><button type="button" id="clear-search" aria-label="{{clear}}" hidden>×</button></form><button id="picks" class="picks" type="button" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg><span>{{saved}}</span><b id="picks-count">0</b></button></div>
+   </div>
   </div>
-  <div class="hero-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><img class="hero-sun" src="/menu/assets/sun.svg" width="600" height="600" alt=""><span class="art-note">a little happiness,<br><i>on ice.</i></span><img class="hero-drinks" src="/menu/assets/iced-coffees.webp" width="954" height="942" fetchpriority="high" alt=""><span class="art-spark spark-one">✦</span><span class="art-spark spark-two">✧</span><span class="art-caption">ROOTED IN KURDISTAN. SHARED WITH YOU.</span></div>
- </section>
- <div class="ticker" aria-hidden="true"><div>{{TICKER}}{{TICKER}}</div></div>
-</div>
-<main>
- <div class="menu-area">
- <section class="menu-intro wrap" id="menu" aria-labelledby="menu-title">
-  <div><p class="eyebrow">SOMETHING FOR EVERY MOOD</p><h2 id="menu-title">What sounds <em>good?</em></h2></div>
-  <p>Coffee first? Something sweet?<br> Make yourself at home.</p>
- </section>
- <div class="menu-tools" id="menu-tools">
-  <div class="tools-top wrap">
-   <div class="search-box"><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg><label class="sr-only" for="search">Search the menu</label><input id="search" type="search" placeholder="Search the menu…" autocomplete="off" autocapitalize="none" spellcheck="false" enterkeyhint="search" maxlength="100"><button class="search-clear" type="button" aria-label="Clear search" hidden>×</button></div>
-   <label class="sort-control"><span>Sort by</span><select id="sort"><option value="menu">Menu order</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option><option value="name">Name: A–Z</option></select></label>
-   <button id="saved-filter" class="saved-filter" type="button" aria-pressed="false"><svg class="icon"><use href="#i-heart"/></svg><span>My picks</span><b id="saved-count">0</b></button>
+  <div class="wrap menu-body">
+   <nav class="category-gallery" aria-label="{{browse}}">{{CATEGORIES}}</nav>
+   <div class="menu-meta"><p id="result-count" role="status" aria-live="polite">{{TOTAL}} {{items}}</p><p class="currency-note">{{prices}}</p></div>
+   <div class="filter-row js-only"><label><span class="sr-only">{{browse}}</span><select id="category-select">{{CATEGORY_OPTIONS}}</select></label><label><span class="sr-only">{{sort}}</span><select id="sort"><option value="menu">{{menuOrder}}</option><option value="low">{{low}}</option><option value="high">{{high}}</option><option value="az">{{az}}</option></select></label></div>
+   <p id="picks-note" hidden>{{pickNote}}</p>
+   <div id="menu-sections">{{MENU}}</div>
+   <div id="empty" class="empty" hidden><span aria-hidden="true">♡</span><h2>{{empty}}</h2><p>{{emptyHint}}</p><button id="reset" type="button">{{reset}}</button></div>
+   <p class="order-note">{{order}}</p>
   </div>
-  <nav class="category-nav wrap" aria-label="Menu categories"><div class="category-scroll" id="categories">{{CATEGORIES}}</div><div class="rail-fade" aria-hidden="true"></div><label class="category-picker" title="Choose a category"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16M4 10h10M4 15h6m4 1 4 4 4-4"/></svg><select id="category-select" aria-label="Choose a category">{{CATEGORY_OPTIONS}}</select></label></nav>
- </div>
- <div class="menu-body wrap">
-  <div class="result-bar"><p id="result-count" role="status" aria-live="polite" aria-atomic="true">{{TOTAL}} things to love</p><span>All prices in <strong>IQD</strong></span></div>
-  <p class="saved-note" id="saved-note" hidden>Your picks are saved on this device. Show them to your server when you’re ready. This does not place an order.</p>
-  <div id="results">{{MENU}}</div>
-  <div class="empty-state" id="empty-state" hidden><span class="empty-sun" aria-hidden="true">✦</span><h3 id="empty-title">Nothing here just yet.</h3><p id="empty-copy">Try a different name or category.</p><button class="primary-button" id="reset" type="button">Explore the whole menu <svg class="icon"><use href="#i-arrow"/></svg></button></div>
-  <noscript><style>.menu-tools,.save-item{display:none}</style><p class="notice">The complete menu is shown above. Turn on JavaScript to use search, category filters and saved picks.</p></noscript>
-  <div class="menu-end"><span aria-hidden="true">✦</span><p>Found your favourite?<br><strong>Your server is ready when you are.</strong></p><small>For ingredients, allergies or availability, please ask our team.</small></div>
- </div>
- </div>
- <section class="heritage"><div class="heritage-inner wrap"><img class="heritage-art" src="/menu/assets/mountain-home.webp" width="1100" height="790" loading="lazy" alt="A mountain home in Kurdistan, illustrated on our original menu boards"><div class="heritage-copy"><p class="eyebrow">FROM KURDISTAN, WITH CARE</p><h2>A generous land.<br>A generous <em>table.</em></h2><p>Good food and warm welcomes.<br>It’s the spirit of Kurda.</p><a href="https://kurda.com/">Meet Kurda <svg class="icon"><use href="#i-arrow"/></svg></a></div></div></section>
-</main>
-<footer class="site-footer wrap"><a href="https://kurda.com/" aria-label="Kurda main website"><img src="/assets/kurda-logo-english.png" width="800" height="342" alt="Kurda"></a><p>A little pause. A lot to love.</p><a class="back-top" href="#top" aria-label="Back to top">Back to top ↑</a></footer>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script type="application/json" id="menu-data">{{DATA}}</script>
-</body></html>
+ </main>
+ <footer class="wrap"><p>{{illustrations}}</p><div><button id="motion" class="js-only" type="button" aria-pressed="false">{{pause}}</button><a href="#top">{{back}} ↑</a></div></footer>
+ <script type="application/json" id="menu-data">{{DATA}}</script>
+ <script type="application/json" id="menu-ui">{{UI}}</script>
+</body>
+</html>

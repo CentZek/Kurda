@@ -1,52 +1,73 @@
-"""Build the static, no-JavaScript-friendly menu from the verified menu data.
-
-Run from any directory: python scripts/build-menu.py
-Source prices: MENU BOARDS.pdf and MENU - KURDA .pdf supplied by Kurda.
-No third-party dependencies. Commit generated dist/menu/index.html too.
-"""
+"""Build all three static menu languages. Source prices remain in menu-data.json."""
 import json
-import math
-from html import escape
+import re
+from html import escape as e
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'dist/menu'
-data = json.loads((OUT / 'menu-data.json').read_text(encoding='utf-8'))
+data = json.loads((OUT / 'menu-data.json').read_text('utf-8'))
+translations = json.loads((ROOT / 'menu-source/translations.json').read_text('utf-8'))
+template = (ROOT / 'menu-source/template.html').read_text('utf-8')
+icons = (ROOT / 'menu-source/icons.html').read_text('utf-8')
+groups = ['food', 'drinks', 'bar', 'gifts']
+group_icons = dict(zip(groups, ['sandwich', 'coffee', 'cocktail', 'gift']))
+group_art = dict(zip(groups, ['sandwich-illustration', 'coffee-illustration', 'cocktail-illustration', None]))
+art = {'sandwiches': 'sandwich-illustration', 'pastries': 'pastry-illustration', 'hot-coffee': 'coffee-illustration', 'iced-coffee': 'iced-coffees', 'tea': 'tea', 'chai': 'coffee-illustration', 'hot-chocolate': 'chocolate', 'iced-chocolate': 'chocolate', 'frappe': 'iced-coffees', 'draft-beer': 'beer-illustration', 'beer': 'beer-illustration', 'cocktails': 'cocktail-illustration', 'gin': 'gin-illustration', 'wine': 'wine-illustration', 'cognac': 'cognac-illustration', 'tequila': 'tequila-illustration'}
 icon = lambda name: f'<svg class="icon" aria-hidden="true"><use href="#i-{name}"/></svg>'
-total = sum(len(cat['items']) for cat in data['categories'])
-bar_total = sum(len(cat['items']) for cat in data['categories'] if cat.get('group') == 'bar')
-sections, tabs, schema_sections = [], [f'<button type="button" class="category active" data-category="all" aria-pressed="true">All <span>{total}</span></button>', f'<button type="button" class="category" data-category="bar" aria-pressed="false">{icon("cocktail")}Bar &amp; drinks <span>{bar_total}</span></button>', f'<button type="button" class="category" data-category="cafe" aria-pressed="false">{icon("coffee")}Café &amp; food <span>{total-bar_total}</span></button>'], []
+def image(name, cls='', eager=False):
+    if not name:
+        return f'<span class="gift-art {cls}">{icon("gift")}</span>'
+    assert (OUT / f'assets/{name}.webp').exists()
+    return f'<img class="{cls}" src="/menu/assets/{name}.webp" alt="" width="240" height="240" loading="{"eager" if eager else "lazy"}" decoding="async">'
+def dump(value):
+    return json.dumps(value, ensure_ascii=False, separators=(',', ':')).replace('<', '\\u003c')
+
 ids = set()
-for n, cat in enumerate(data['categories'], 1):
-    cards, schema_items = [], []
-    tabs.append(f'<button type="button" class="category" data-category="{cat["id"]}" data-group="{cat.get("group", "cafe")}" aria-pressed="false">{icon(cat["icon"])}{escape(cat["name"])}</button>')
+for cat in data['categories']:
+    cat['group'] = 'bar' if cat.get('group') == 'bar' else 'food' if cat['id'] in ['sandwiches', 'pastries'] else 'gifts' if cat['id'] == 'gifts' else 'drinks'
+    cat['names'] = {'en': cat['name'], **{lang: translations[lang]['categories'][cat['id']] for lang in ['ar', 'ckb']}}
+    cat['art'] = art.get(cat['id'], 'whiskey-illustration' if cat['group'] == 'bar' else None)
     for item in cat['items']:
         assert item['id'] not in ids
         ids.add(item['id'])
-        assert item['prices'] and all(p is None or isinstance(p, int) and p > 0 for p in item['prices'].values())
-        price_rows = ''.join(f'<div><dt>{escape(size) if size else "Price"}</dt><dd>{format(price, ",") + "<small> IQD</small>" if price is not None else "<span class=price-on-request>Ask your server</span>"}</dd></div>' for size, price in item['prices'].items())
-        flavours = f'<p class="flavours">{" · ".join(item["flavours"])}</p>' if item.get('flavours') else ''
-        cards.append(f'''<article class="menu-card" data-item="{item['id']}"><div class="card-top"><span class="card-category">{escape(cat['name'])}</span><button class="save-item" data-save="{item['id']}" type="button" aria-label="Save {escape(item['name'])}" aria-pressed="false">{icon('heart')}</button></div><h4>{escape(item['name'])}</h4>{flavours}<dl class="prices {'single-price' if '' in item['prices'] else ''}">{price_rows}</dl></article>''')
-        schema_item = {'@type': 'MenuItem', 'name': item['name'], 'description': ', '.join(item.get('flavours', []))}
-        offers = [{'@type': 'Offer', 'name': size or item['name'], 'price': price, 'priceCurrency': 'IQD'} for size, price in item['prices'].items() if price is not None]
-        if offers: schema_item['offers'] = offers
-        schema_items.append(schema_item)
-    artwork = {'iced-coffee': 'iced-coffees', 'tea': 'tea', 'hot-chocolate': 'chocolate', 'iced-chocolate': 'chocolate', 'frappe': 'iced-coffees'}.get(cat['id'])
-    decoration = f'<img class="section-art" src="/menu/assets/{artwork}.webp" width="100" height="100" alt="" loading="lazy">' if artwork else f'<span class="section-icon">{icon(cat["icon"])}</span>'
-    sections.append(f'''<section class="menu-section" data-section="{cat['id']}" aria-labelledby="heading-{cat['id']}"><div class="section-heading"><span class="section-number">{n:02}</span><div><p class="eyebrow">{escape(cat['eyebrow'])}</p><h3 id="heading-{cat['id']}">{escape(cat['name'])}</h3><p>{escape(cat['description'])}</p></div>{decoration}</div><div class="card-grid">{''.join(cards)}</div></section>''')
-    schema_sections.append({'@type': 'MenuSection', 'name': cat['name'], 'hasMenuItem': schema_items})
-assert len(ids) == total
-category_options = f'<option value="all">All items ({total})</option><option value="bar">Bar &amp; drinks ({bar_total})</option><option value="cafe">Café &amp; food ({total-bar_total})</option>'
-for group, label in [('cafe', 'Café & food'), ('bar', 'Bar & drinks')]:
-    category_options += f'<optgroup label="{escape(label)}">' + ''.join(f'<option value="{cat["id"]}">{escape(cat["name"])}</option>' for cat in data['categories'] if cat.get('group', 'cafe') == group) + '</optgroup>'
-schema = {'@context': 'https://schema.org', '@type': 'Menu', 'name': 'Kurda Menu', 'url': 'https://www.kurda.com/menu', 'inLanguage': 'en', 'hasMenuSection': schema_sections}
-text = (ROOT / 'menu-source/template.html').read_text(encoding='utf-8')
-text = text.replace('{{CATEGORY_OPTIONS}}', category_options)
-for key, value in {'TOTAL': str(total), 'MENU': ''.join(sections), 'CATEGORIES': ''.join(tabs), 'DATA': json.dumps(data, ensure_ascii=False).replace('<', '\\u003c'), 'SCHEMA': json.dumps(schema, ensure_ascii=False), 'TICKER': '<span>COFFEE &amp; CONVERSATION <b>✦</b> A BITE TO SAVOUR <b>✦</b> SOMETHING SWEET <b>✦</b> A LITTLE KURDA MOMENT <b>✦</b></span>'}.items():
-    text = text.replace('{{' + key + '}}', value)
-(OUT / 'index.html').write_text(text, encoding='utf-8')
-points = ' '.join(f'{300 + (290 if i % 2 == 0 else 132) * math.cos(i * math.pi / 21 - math.pi/2):.2f},{300 + (290 if i % 2 == 0 else 132) * math.sin(i * math.pi / 21 - math.pi/2):.2f}' for i in range(42))
-sun = f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600"><polygon fill="#f9bf20" points="{points}"/></svg>'
-(OUT / 'assets/sun.svg').write_text(sun, encoding='utf-8')
-(OUT / 'assets/favicon.svg').write_text(sun, encoding='utf-8')
-print(f'Built {len(ids)} items across {len(data["categories"])} categories.')
+        assert all(p is None or isinstance(p, int) and p > 0 for p in item['prices'].values())
+        item['names'] = {'en': item['name'], **{lang: translations[lang]['items'][item['id']] for lang in ['ar', 'ckb']}}
+        item['flavoursByLanguage'] = {lang: [translations[lang]['ui'][f] for f in item.get('flavours', [])] for lang in translations}
+assert len(ids) == sum(len(cat['items']) for cat in data['categories'])
+# Show food first in the HTML as well as the interactive view.
+data['categories'].sort(key=lambda cat: groups.index(cat['group']))
+for lang, tr in translations.items():
+    ui = tr['ui']
+    url = 'https://www.kurda.com/menu' + (f'/{lang}/' if lang != 'en' else '')
+    sections, categories, schema_sections, options = [], [], [], []
+    for cat in data['categories']:
+        name, cid, group = cat['names'][lang], cat['id'], cat['group']
+        options.append(f'<option value="{cid}" data-group="{group}">{e(name)}</option>')
+        categories.append(f'<a class="category-tile" data-category="{cid}" data-group="{group}" href="#section-{cid}">{image(cat["art"])}<span>{e(name)}</span></a>')
+        cards, schema_items = [], []
+        for item in cat['items']:
+            item_name = item['names'][lang]
+            prices = ''.join(f'<div><dt>{e(ui.get(size, size)) if size else ""}</dt><dd>{"<bdi>" + format(price, ",") + "</bdi>" if price is not None else e(ui["ask"])}</dd></div>' for size, price in item['prices'].items())
+            flavours = f'<p class="flavours">{" · ".join(map(e, item["flavoursByLanguage"][lang]))}</p>' if item.get('flavours') else ''
+            cards.append(f'<article class="menu-card" data-item="{item["id"]}"><div class="item-info"><h3>{e(item_name)}</h3>{flavours}</div><dl class="prices {"single" if len(item["prices"]) == 1 else "multiple"}">{prices}</dl><button class="save-item js-only" data-save="{item["id"]}" type="button" aria-label="{e(ui["save"] + " " + item_name)}" aria-pressed="false">{icon("heart")}</button></article>')
+            schema_item = {'@type':'MenuItem','name':item_name}
+            offers = [{'@type':'Offer','name':ui.get(size, size) or item_name,'price':price,'priceCurrency':'IQD'} for size, price in item['prices'].items() if price is not None]
+            if offers: schema_item['offers'] = offers
+            schema_items.append(schema_item)
+        sections.append(f'<section class="menu-section" id="section-{cid}" data-section="{cid}" data-group="{group}" aria-labelledby="heading-{cid}"><div class="section-heading"><div><p class="eyebrow">{e(ui[group])}</p><h2 id="heading-{cid}">{e(name)}</h2></div>{image(cat["art"])}</div><div class="card-grid">{"".join(cards)}</div></section>')
+        schema_sections.append({'@type':'MenuSection','name':name,'hasMenuItem':schema_items})
+    group_cards, tabs = [], []
+    for group in groups:
+        first = next(cat['id'] for cat in data['categories'] if cat['group'] == group)
+        group_cards.append(f'<a class="group-card {group}" data-browse="{group}" href="#section-{first}">{image(group_art[group], eager=True)}<span class="group-copy"><strong>{e(ui[group])}</strong><span>{e(ui[group+"Hint"])}</span></span><span class="card-arrow" aria-hidden="true">↗</span></a>')
+        tabs.append(f'<a href="#section-{first}" data-browse="{group}">{icon(group_icons[group])}<span>{e(ui[group])}</span></a>')
+    links = ''.join(f'<a href="/menu{("/"+code+"/") if code != "en" else ""}" lang="{code}" hreflang="{code}" data-language="{code}" {"aria-current=page" if code == lang else ""}>{label}</a>' for code, label in [('en','English'),('ckb','کوردی'),('ar','العربية')])
+    schema = {'@context':'https://schema.org','@type':'Menu','name':ui['title'],'url':url,'inLanguage':lang,'hasMenuSection':schema_sections}
+    values = {**{k:e(v) for k,v in ui.items()}, 'LANG':lang, 'DIR':'ltr' if lang == 'en' else 'rtl', 'URL':url, 'ICONS':icons, 'LANGUAGES':links, 'GROUP_CARDS':''.join(group_cards), 'GROUP_TABS':''.join(tabs), 'CATEGORIES':''.join(categories), 'CATEGORY_OPTIONS':f'<option value="all">{e(ui["all"])}</option>'+''.join(options), 'MENU':''.join(sections), 'TOTAL':str(len(ids)), 'DATA':dump(data), 'UI':dump(ui), 'SCHEMA':dump(schema)}
+    html = re.sub(r'\{\{([^}]+)\}\}', lambda m: values[m[1]], template)
+    dest = OUT if lang == 'en' else OUT/lang
+    dest.mkdir(exist_ok=True)
+    (dest/'index.html').write_text(html,encoding='utf-8')
+(OUT/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join('<url><loc>https://www.kurda.com/menu'+(f'/{lang}/' if lang != 'en' else '')+'</loc></url>' for lang in translations)+'</urlset>',encoding='utf-8')
+print(f'Built {len(ids)} items in English, Sorani Kurdish and Arabic.')

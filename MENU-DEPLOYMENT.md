@@ -25,9 +25,19 @@ Edit names, flavours or prices there, then run:
 python scripts/build-menu.py
 ```
 
-Commit both the JSON and generated `dist/menu/index.html`, then push to `main`. Vercel deploys the already-built `dist` directory; no Node build or runtime dependencies are needed. Edit the page shell in `menu-source/template.html`, styles in `dist/menu/menu.css` and interactions in `dist/menu/menu.js`.
+Commit the JSON and all generated language pages, then push to `main`. Vercel deploys the already-built `dist` directory; no Node build or runtime dependencies are needed. Edit the page shell in `menu-source/template.html`, styles in `dist/menu/menu.css` and interactions in `dist/menu/menu.js`.
 
-The full menu is rendered in HTML and remains readable without JavaScript. Search, category filters, price/name sorting and locally saved picks progressively enhance it. The Cafe & food and Bar & drinks shortcuts filter the category rail as well as the results. Sorting by price uses the lowest **available** listed size. Items with a null price are shown as "Ask your server", sorted last in both price directions, and omitted from structured-data offers. My picks is a shortlist, not an order or payment flow. No invented ingredients, allergens, availability, popularity rankings or extras are added.
+The full menu is rendered in HTML and remains readable without JavaScript. With JavaScript enabled it opens on Food (12 items); sticky Food, Drinks (35), Bar (73), and Gifts (6) tabs keep navigation available while scrolling. Illustrated category tiles and a native category selector provide two ways to browse. Search covers every group and all three languages, including English brand names while viewing Arabic or Kurdish. Saved picks also span all groups. Sorting operates within each category and uses the lowest **available** listed size. Items with a null price are shown as "Ask your server", sorted last in both price directions, and omitted from structured-data offers. My picks is a shortlist, not an order or payment flow. No invented ingredients, allergens, availability, popularity rankings or extras are added.
+
+## Languages
+
+- English: `https://www.kurda.com/menu`
+- Sorani Kurdish: `https://www.kurda.com/menu/ckb/`
+- Arabic: `https://www.kurda.com/menu/ar/`
+
+All 126 names, 24 categories, controls, flavours and serving sizes are localized. The translations live in `menu-source/translations.json`, keyed by stable item IDs; update this file alongside new source items. The builder fails on missing translations. Both Sorani and Arabic use right-to-left layouts, a local Arabic font and isolated left-to-right price numerals. Brand names are transliterated; their original English names remain searchable. The language switch preserves section, category, search, sorting and saved-picks view through URL parameters. Saved items persist locally across languages. Each language has its own canonical URL, structured menu data and hreflang alternatives. The original table QR remains valid.
+
+The mobile redesign was checked in WebKit at widths 320, 390 and 430 px, plus 844 × 390 landscape, and Chromium at 1440 px. Checks covered all categories, all prices, cross-language search, saved picks, language changes, missing prices, image loading, horizontal overflow and no-JavaScript fallback. Automated WCAG A/AA checks reported no violations in the inspected English and RTL views. Human language review can be applied directly in the translation file without altering prices.
 
 Important source details retained:
 
@@ -41,7 +51,7 @@ Important source details retained:
 
 ## Artwork and performance
 
-The illustrated iced coffees, hot chocolate, tea glass and mountain home were extracted from the user's own PDF vector artwork, rendered with transparency and compressed to WebP. They are illustrations, not photographs of specific served items. The existing original English and Kurdish logos are reused. Fonts are self-hosted. The 251 MB source PDF is deliberately excluded from the website and GitHub; the menu does not download it.
+The illustrated iced coffees, hot chocolate, tea glass and mountain home were extracted from the user's own PDF vector artwork, rendered with transparency and compressed to WebP. The new visual category design adds watercolor food/coffee art and illustrations extracted from the bar PDF. See `MENU-IMAGERY.md` for provenance and generation prompts. These are category illustrations, not photographs of specific served items. The existing original English and Kurdish logos are reused. Fonts are self-hosted. The source PDFs are deliberately excluded from the website and GitHub; the menu does not download them.
 
 Continuous motion can be paused and respects the operating system's reduced-motion setting. Only visible cards animate. There are no third-party trackers, remote font requests, frameworks or backend services.
 
