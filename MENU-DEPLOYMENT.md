@@ -5,11 +5,16 @@
 The permanent menu address is **https://www.kurda.com/menu**. It uses the existing website and needs no additional Vercel domain or DNS setup.
 
 - Menu: `https://www.kurda.com/menu`
-- Printable A6 table card: `https://www.kurda.com/menu/qr/table-card.html`
+- Table-card print page: `https://www.kurda.com/menu/qr/table-card.html`
+- Print-ready A4 PDF: `https://www.kurda.com/menu/qr/kurda-table-cards-85x54mm-a4.pdf`
 - QR PNG: `https://www.kurda.com/menu/qr/kurda-menu-qr.png?v=2`
 - QR SVG: `https://www.kurda.com/menu/qr/kurda-menu-qr.svg?v=2`
 
 Both QR files encode exactly **https://www.kurda.com/menu**. Use these updated files instead of the earlier subdomain QR. The QR stays the same when prices or dishes change.
+
+The print sheet contains **11 cards, each 85 mm wide × 54 mm high** for landscape holders. Five are upright on the sheet and six are rotated for efficient use of A4. It uses 3 mm gutters, external crop ticks, dotted trim outlines, and at least 4 mm clear printer margins. Print A4 portrait at **Actual size / 100%**, one PDF page per sheet; disable Fit to page. The PDF QR codes are vector graphics with a four-module quiet zone. All eleven were decoded successfully from the 150 dpi Poppler-rendered sheet, and all trim rectangles were checked against the requested physical dimensions.
+
+Rebuild the PDF with `python scripts/build-table-cards.py` (ReportLab, qrcode and fonttools; Windows Georgia font). The script creates a local deliverable in `output/pdf/` and copies it into `dist/menu/qr/`. Regenerate the WebP preview from the PDF after design changes. The print page links directly to the PDF so browser layout scaling does not affect the supplied card sizes.
 
 ## Routing
 
@@ -55,4 +60,4 @@ The illustrated iced coffees, hot chocolate, tea glass and mountain home were ex
 
 Continuous motion can be paused and respects the operating system's reduced-motion setting. Only visible cards animate. There are no third-party trackers, remote font requests, frameworks or backend services.
 
-`menu-source/social.html` is the 1200 × 630 source layout for the menu's social sharing image. The QR is high error-correction, with a four-module quiet zone. The A6 card can be printed or saved as PDF in the browser's print dialog.
+`menu-source/social.html` is the 1200 × 630 source layout for the menu's social sharing image. The QR is high error-correction, with a four-module quiet zone. Use the A4 PDF linked above to print the 85 × 54 mm table cards.
