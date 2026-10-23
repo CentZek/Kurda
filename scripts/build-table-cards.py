@@ -72,14 +72,14 @@ def card():
     text(63.5, 7, 'Scan to view the menu', 6.2, center=True)
 
 def guides(x, y, w, h):
-    # Light trim boundary plus short external corner ticks, all within A4.
-    c.setStrokeColor(HexColor('#a8a8a8'))
-    c.setLineWidth(.23)
-    c.setDash(1.4, 1.8)
+    # Solid black trim boundaries remain clear on ordinary office printers.
+    c.setStrokeColorRGB(0, 0, 0)
+    c.setLineWidth(.8)
+    c.setDash()
     c.rect(x*mm, y*mm, w*mm, h*mm, fill=0, stroke=1)
     c.setDash()
-    c.setStrokeColor(HexColor('#666666'))
-    c.setLineWidth(.3)
+    c.setStrokeColorRGB(0, 0, 0)
+    c.setLineWidth(1)
     for px in [x, x+w]:
         for py in [y, y+h]:
             sx = -1 if px == x else 1
