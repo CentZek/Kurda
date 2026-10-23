@@ -17,7 +17,7 @@
  let paused=storage.get('kurda-menu-motion')==='paused'||matchMedia('(prefers-reduced-motion: reduce)').matches;
  function motion(){document.documentElement.classList.toggle('motion-paused',paused);$('#motion').textContent=paused?ui.play:ui.pause;$('#motion').setAttribute('aria-pressed',String(paused));}
  const normalize=s=>s.toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f\u064b-\u065f\u0670\u0640]/g,'').replace(/[يى]/g,'ی').replace(/ك/g,'ک').replace(/[أإآ]/g,'ا');
- const searchable=new Map(cats.flatMap(c=>c.items.map(i=>[i.id,normalize([...Object.values(i.names),...Object.values(c.names),...Object.values(i.flavoursByLanguage).flat()].join(' '))])));
+ const searchable=new Map(cats.flatMap(c=>c.items.map(i=>[i.id,normalize([...Object.values(i.names),...Object.values(c.names),...Object.values(i.flavoursByLanguage).flat(),...Object.values(i.notesByLanguage||{})].join(' '))])));
  function syncLinks(){
   const p=new URLSearchParams();if(state.group!=='food')p.set('section',state.group);if(state.category!=='all')p.set('category',state.category);if(state.query)p.set('q',state.query);if(state.sort!=='menu')p.set('sort',state.sort);if(state.picks)p.set('picks','1');
   const suffix=p.size?'?'+p.toString():'';history.replaceState(null,'',location.pathname+suffix);

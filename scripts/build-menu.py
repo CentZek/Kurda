@@ -15,9 +15,9 @@ group_icons = dict(zip(groups, ['sandwich', 'coffee', 'cocktail', 'gift']))
 group_art = dict(zip(groups, ['sandwich-illustration', 'coffee-illustration', 'cocktail-illustration', None]))
 art = {'sandwiches': 'sandwich-illustration', 'pastries': 'pastry-illustration', 'hot-coffee': 'coffee-illustration', 'iced-coffee': 'iced-coffees', 'tea': 'tea', 'chai': 'coffee-illustration', 'hot-chocolate': 'chocolate', 'iced-chocolate': 'chocolate', 'frappe': 'iced-coffees', 'draft-beer': 'beer-illustration', 'beer': 'beer-illustration', 'cocktails': 'cocktail-illustration', 'gin': 'gin-illustration', 'wine': 'wine-illustration', 'cognac': 'cognac-illustration', 'tequila': 'tequila-illustration'}
 icon = lambda name: f'<svg class="icon" aria-hidden="true"><use href="#i-{name}"/></svg>'
-def image(name, cls='', eager=False):
+def image(name, cls='', eager=False, fallback='gift'):
     if not name:
-        return f'<span class="gift-art {cls}">{icon("gift")}</span>'
+        return f'<span class="gift-art {cls}">{icon(fallback)}</span>'
     assert (OUT / f'assets/{name}.webp').exists()
     return f'<img class="{cls}" src="/menu/assets/{name}.webp" alt="" width="240" height="240" loading="{"eager" if eager else "lazy"}" decoding="async">'
 def dump(value):
@@ -25,7 +25,7 @@ def dump(value):
 
 ids = set()
 for cat in data['categories']:
-    cat['group'] = 'bar' if cat.get('group') == 'bar' else 'food' if cat['id'] in ['sandwiches', 'pastries'] else 'gifts' if cat['id'] == 'gifts' else 'drinks'
+    assert cat['group'] in groups, f'Unknown group: {cat["id"]}'
     cat['names'] = {'en': cat['name'], **{lang: translations[lang]['categories'][cat['id']] for lang in ['ar', 'ckb']}}
     cat['art'] = art.get(cat['id'], 'whiskey-illustration' if cat['group'] == 'bar' else None)
     for item in cat['items']:
@@ -34,6 +34,7 @@ for cat in data['categories']:
         assert all(p is None or isinstance(p, int) and p > 0 for p in item['prices'].values())
         item['names'] = {'en': item['name'], **{lang: translations[lang]['items'][item['id']] for lang in ['ar', 'ckb']}}
         item['flavoursByLanguage'] = {lang: [translations[lang]['ui'][f] for f in item.get('flavours', [])] for lang in translations}
+        item['notesByLanguage'] = {lang: translations[lang]['ui'][item['noteKey']] for lang in translations} if item.get('noteKey') else {}
 assert len(ids) == sum(len(cat['items']) for cat in data['categories'])
 # Show food first in the HTML as well as the interactive view.
 data['categories'].sort(key=lambda cat: groups.index(cat['group']))
@@ -44,18 +45,22 @@ for lang, tr in translations.items():
     for cat in data['categories']:
         name, cid, group = cat['names'][lang], cat['id'], cat['group']
         options.append(f'<option value="{cid}" data-group="{group}">{e(name)}</option>')
-        categories.append(f'<a class="category-tile" data-category="{cid}" data-group="{group}" href="#section-{cid}">{image(cat["art"])}<span>{e(name)}</span></a>')
+        categories.append(f'<a class="category-tile" data-category="{cid}" data-group="{group}" href="#section-{cid}">{image(cat["art"], fallback=cat["icon"])}<span>{e(name)}</span></a>')
         cards, schema_items = [], []
         for item in cat['items']:
             item_name = item['names'][lang]
-            prices = ''.join(f'<div><dt>{e(ui.get(size, size)) if size else ""}</dt><dd>{"<bdi>" + format(price, ",") + "</bdi>" if price is not None else e(ui["ask"])}</dd></div>' for size, price in item['prices'].items())
+            missing_price = ui['variablePrice'] if item.get('priceType') == 'variable' else ui['ask']
+            prices = ''.join(f'<div><dt>{e(ui.get(size, size)) if size else ""}</dt><dd>{"<bdi>" + format(price, ",") + "</bdi>" if price is not None else e(missing_price)}</dd></div>' for size, price in item['prices'].items())
             flavours = f'<p class="flavours">{" · ".join(map(e, item["flavoursByLanguage"][lang]))}</p>' if item.get('flavours') else ''
-            cards.append(f'<article class="menu-card" data-item="{item["id"]}"><div class="item-info"><h3>{e(item_name)}</h3>{flavours}</div><dl class="prices {"single" if len(item["prices"]) == 1 else "multiple"}">{prices}</dl><button class="save-item js-only" data-save="{item["id"]}" type="button" aria-label="{e(ui["save"] + " " + item_name)}" aria-pressed="false">{icon("heart")}</button></article>')
+            note = f'<p class="item-note">{e(item["notesByLanguage"][lang])}</p>' if item['notesByLanguage'] else ''
+            cards.append(f'<article class="menu-card" data-item="{item["id"]}"><div class="item-info"><h3>{e(item_name)}</h3>{flavours}{note}</div><dl class="prices {"single" if len(item["prices"]) == 1 else "multiple"}">{prices}</dl><button class="save-item js-only" data-save="{item["id"]}" type="button" aria-label="{e(ui["save"] + " " + item_name)}" aria-pressed="false">{icon("heart")}</button></article>')
             schema_item = {'@type':'MenuItem','name':item_name}
+            descriptions = item['flavoursByLanguage'][lang] + ([item['notesByLanguage'][lang]] if item['notesByLanguage'] else [])
+            if descriptions: schema_item['description'] = '; '.join(descriptions)
             offers = [{'@type':'Offer','name':ui.get(size, size) or item_name,'price':price,'priceCurrency':'IQD'} for size, price in item['prices'].items() if price is not None]
             if offers: schema_item['offers'] = offers
             schema_items.append(schema_item)
-        sections.append(f'<section class="menu-section" id="section-{cid}" data-section="{cid}" data-group="{group}" aria-labelledby="heading-{cid}"><div class="section-heading"><div><p class="eyebrow">{e(ui[group])}</p><h2 id="heading-{cid}">{e(name)}</h2></div>{image(cat["art"])}</div><div class="card-grid">{"".join(cards)}</div></section>')
+        sections.append(f'<section class="menu-section" id="section-{cid}" data-section="{cid}" data-group="{group}" aria-labelledby="heading-{cid}"><div class="section-heading"><div><p class="eyebrow">{e(ui[group])}</p><h2 id="heading-{cid}">{e(name)}</h2></div>{image(cat["art"], fallback=cat["icon"])}</div><div class="card-grid">{"".join(cards)}</div></section>')
         schema_sections.append({'@type':'MenuSection','name':name,'hasMenuItem':schema_items})
     group_cards, tabs = [], []
     for group in groups:
