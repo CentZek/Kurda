@@ -1,4 +1,4 @@
-"""Build all three static menu languages. Source prices remain in menu-data.json."""
+"""Build all three static menu languages from the price-free catalog."""
 import json
 import re
 from html import escape as e
@@ -31,7 +31,8 @@ for cat in data['categories']:
     for item in cat['items']:
         assert item['id'] not in ids
         ids.add(item['id'])
-        assert all(p is None or isinstance(p, int) and p > 0 for p in item['prices'].values())
+        assert set(item) <= {'id', 'name', 'sizes', 'flavours', 'noteKey'}
+        assert isinstance(item['sizes'], list) and all(isinstance(s, str) and s for s in item['sizes'])
         item['names'] = {'en': item['name'], **{lang: translations[lang]['items'][item['id']] for lang in ['ar', 'ckb']}}
         item['flavoursByLanguage'] = {lang: [translations[lang]['ui'][f] for f in item.get('flavours', [])] for lang in translations}
         item['notesByLanguage'] = {lang: translations[lang]['ui'][item['noteKey']] for lang in translations} if item.get('noteKey') else {}
@@ -49,16 +50,13 @@ for lang, tr in translations.items():
         cards, schema_items = [], []
         for item in cat['items']:
             item_name = item['names'][lang]
-            missing_price = ui['variablePrice'] if item.get('priceType') == 'variable' else ui['ask']
-            prices = ''.join(f'<div><dt>{e(ui.get(size, size)) if size else ""}</dt><dd>{"<bdi>" + format(price, ",") + "</bdi>" if price is not None else e(missing_price)}</dd></div>' for size, price in item['prices'].items())
+            sizes = f'<ul class="sizes" aria-label="{e(ui["sizes"])}">' + ''.join(f'<li>{e(ui[size])}</li>' for size in item['sizes']) + '</ul>' if item['sizes'] else ''
             flavours = f'<p class="flavours">{" · ".join(map(e, item["flavoursByLanguage"][lang]))}</p>' if item.get('flavours') else ''
             note = f'<p class="item-note">{e(item["notesByLanguage"][lang])}</p>' if item['notesByLanguage'] else ''
-            cards.append(f'<article class="menu-card" data-item="{item["id"]}"><div class="item-info"><h3>{e(item_name)}</h3>{flavours}{note}</div><dl class="prices {"single" if len(item["prices"]) == 1 else "multiple"}">{prices}</dl><button class="save-item js-only" data-save="{item["id"]}" type="button" aria-label="{e(ui["save"] + " " + item_name)}" aria-pressed="false">{icon("heart")}</button></article>')
+            cards.append(f'<article class="menu-card" data-item="{item["id"]}"><div class="item-info"><h3>{e(item_name)}</h3>{flavours}{sizes}{note}</div><button class="save-item js-only" data-save="{item["id"]}" type="button" aria-label="{e(ui["save"] + " " + item_name)}" aria-pressed="false">{icon("heart")}</button></article>')
             schema_item = {'@type':'MenuItem','name':item_name}
-            descriptions = item['flavoursByLanguage'][lang] + ([item['notesByLanguage'][lang]] if item['notesByLanguage'] else [])
+            descriptions = [ui[s] for s in item['sizes']] + item['flavoursByLanguage'][lang] + ([item['notesByLanguage'][lang]] if item['notesByLanguage'] else [])
             if descriptions: schema_item['description'] = '; '.join(descriptions)
-            offers = [{'@type':'Offer','name':ui.get(size, size) or item_name,'price':price,'priceCurrency':'IQD'} for size, price in item['prices'].items() if price is not None]
-            if offers: schema_item['offers'] = offers
             schema_items.append(schema_item)
         sections.append(f'<section class="menu-section" id="section-{cid}" data-section="{cid}" data-group="{group}" aria-labelledby="heading-{cid}"><div class="section-heading"><div><p class="eyebrow">{e(ui[group])}</p><h2 id="heading-{cid}">{e(name)}</h2></div>{image(cat["art"], fallback=cat["icon"])}</div><div class="card-grid">{"".join(cards)}</div></section>')
         schema_sections.append({'@type':'MenuSection','name':name,'hasMenuItem':schema_items})

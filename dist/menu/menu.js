@@ -8,7 +8,7 @@
  const cards=new Map($$('[data-item]').map(el=>[el.dataset.item,el]));
  const sections=$$('[data-section]'), params=new URLSearchParams(location.search);
  const validGroups=['food','drinks','bar','gifts'];
- const state={group:validGroups.includes(params.get('section'))?params.get('section'):'food',category:'all',query:params.get('q')||'',sort:['low','high','az'].includes(params.get('sort'))?params.get('sort'):'menu',picks:params.get('picks')==='1'};
+ const state={group:validGroups.includes(params.get('section'))?params.get('section'):'food',category:'all',query:params.get('q')||'',sort:params.get('sort')==='az'?'az':'menu',picks:params.get('picks')==='1'};
  if(cats.some(c=>c.id===params.get('category'))){state.category=params.get('category');state.group=cats.find(c=>c.id===state.category).group;}
  const hashCategory=location.hash.replace('#section-','');
  if(cats.some(c=>c.id===hashCategory)){state.category=hashCategory;state.group=cats.find(c=>c.id===hashCategory).group;}
@@ -30,10 +30,9 @@
  function render(animate=true){
   const query=normalize(state.query.trim()), global=!!query||state.picks;
   const tokens=query.split(/\s+/).filter(Boolean);let count=0;
-  const minPrice=i=>{const p=Object.values(i.prices).filter(p=>p!==null);return p.length?Math.min(...p):null;};
   for(const c of cats){
    const section=$('[data-section="'+c.id+'"]');let shown=0;
-   const sorted=[...c.items];if(state.sort!=='menu')sorted.sort((a,b)=>{if(state.sort==='az')return a.names[lang].localeCompare(b.names[lang],lang);const x=minPrice(a),y=minPrice(b);return x===null?(y===null?0:1):y===null?-1:state.sort==='low'?x-y:y-x;});
+   const sorted=[...c.items];if(state.sort==='az')sorted.sort((a,b)=>a.names[lang].localeCompare(b.names[lang],lang));
    const grid=section.querySelector('.card-grid');
    sorted.forEach(i=>{const match=(global||c.group===state.group)&&(state.category==='all'||c.id===state.category)&&(!state.picks||saved.has(i.id))&&tokens.every(t=>searchable.get(i.id).includes(t));const card=cards.get(i.id);card.hidden=!match;grid.append(card);if(match){shown++;count++;}});
    section.hidden=!shown;section.classList.remove('appear');if(shown&&animate){void section.offsetWidth;section.classList.add('appear');}

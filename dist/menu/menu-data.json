@@ -1,5 +1,4 @@
 {
-  "currency": "IQD",
   "categories": [
     {
       "id": "sandwiches",
@@ -10,65 +9,47 @@
         {
           "id": "beef-fajita",
           "name": "Beef Fajita Sandwich",
-          "prices": {
-            "": 10000
-          }
+          "sizes": []
         },
         {
           "id": "chicken-steak",
           "name": "Chicken Steak Sandwich",
-          "prices": {
-            "": 10000
-          }
+          "sizes": []
         },
         {
           "id": "grilled-chicken",
           "name": "Grilled Chicken Sandwich",
-          "prices": {
-            "": 10000
-          }
+          "sizes": []
         },
         {
           "id": "tanduri-chicken",
           "name": "Tandoori Chicken Sandwich",
-          "prices": {
-            "": 10000
-          }
+          "sizes": []
         },
         {
           "id": "beef-steak",
           "name": "Beef Steak Sandwich",
-          "prices": {
-            "": 10000
-          }
+          "sizes": []
         },
         {
           "id": "club-sandwich",
           "name": "Club Sandwich Chicken & Cheese",
-          "prices": {
-            "": 9000
-          }
+          "sizes": []
         },
         {
           "id": "halloumi",
           "name": "Halloumi Cheese Sandwich",
-          "prices": {
-            "": 9000
-          }
+          "sizes": []
         },
         {
           "id": "minced-meat-manaqesh",
           "name": "Minced Meat Manaqesh",
-          "prices": {
-            "": 7500
-          }
+          "sizes": []
         },
         {
           "id": "manaqesh",
           "name": "Manaqesh",
-          "prices": {
-            "": 6000
-          }
+          "sizes": []
         }
       ]
     },
@@ -81,74 +62,74 @@
         {
           "id": "margarita-pizza",
           "name": "Margarita Pizza",
-          "prices": {
-            "Small": 10500,
-            "Medium": 15000,
-            "Large": 19500
-          }
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
         },
         {
           "id": "chicken-vegetable-pizza",
           "name": "Chicken Vegetable Pizza",
-          "prices": {
-            "Small": 10500,
-            "Medium": 15000,
-            "Large": 19500
-          }
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
         },
         {
           "id": "pepperoni-pizza",
           "name": "Pepperoni Pizza",
-          "prices": {
-            "Small": 10500,
-            "Medium": 15000,
-            "Large": 19500
-          }
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
         },
         {
           "id": "four-seasons-pizza",
           "name": "Four Seasons Pizza",
-          "prices": {
-            "Small": 10500,
-            "Medium": 15000,
-            "Large": 19500
-          }
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
         },
         {
           "id": "vegetarian-pizza",
           "name": "Vegetarian Pizza",
-          "prices": {
-            "Small": 10500,
-            "Medium": 15000,
-            "Large": 19500
-          }
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
         },
         {
           "id": "kurda-pizza",
           "name": "Kurda Pizza",
-          "prices": {
-            "Small": 10500,
-            "Medium": 15000,
-            "Large": 19500
-          }
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
         },
         {
           "id": "chicken-bbq-pizza",
           "name": "Chicken BBQ Pizza",
-          "prices": {
-            "Small": 10500,
-            "Medium": 15000,
-            "Large": 19500
-          }
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
         },
         {
           "id": "meat-bbq-pizza",
           "name": "Meat BBQ Pizza",
-          "prices": {
-            "Small": 10500,
-            "Medium": 15000,
-            "Large": 19500
-          }
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
         }
       ]
     },
@@ -161,16 +142,12 @@
         {
           "id": "red-pasta",
           "name": "Red Pasta",
-          "prices": {
-            "": 15000
-          }
+          "sizes": []
         },
         {
           "id": "white-pasta",
           "name": "White Pasta",
-          "prices": {
-            "": 17500
-          }
+          "sizes": []
         }
       ]
     },
@@ -183,44 +160,36 @@
         {
           "id": "orange-piece",
           "name": "Orange",
-          "prices": {
-            "1 piece": 1000
-          }
+          "sizes": [
+            "1 piece"
+          ]
         },
         {
           "id": "lemon-piece",
           "name": "Lemon",
-          "prices": {
-            "1 piece": 1000
-          }
+          "sizes": [
+            "1 piece"
+          ]
         },
         {
           "id": "roca-salad",
           "name": "Roca Salad",
-          "prices": {
-            "": 9500
-          }
+          "sizes": []
         },
         {
           "id": "greek-salad",
           "name": "Greek Salad",
-          "prices": {
-            "": 9500
-          }
+          "sizes": []
         },
         {
           "id": "caesar-salad",
           "name": "Caesar Salad",
-          "prices": {
-            "": 9500
-          }
+          "sizes": []
         },
         {
           "id": "fruit-salad",
           "name": "Fruit Salad",
-          "prices": {
-            "": 8500
-          }
+          "sizes": []
         }
       ]
     },
@@ -233,149 +202,107 @@
         {
           "id": "mini-pastries",
           "name": "Mini-Pastries",
-          "prices": {
-            "": 4000
-          }
+          "sizes": []
         },
         {
           "id": "cake",
           "name": "Sliced Cake",
-          "prices": {
-            "": 6500
-          }
+          "sizes": []
         },
         {
           "id": "tiramisu",
           "name": "Tiramisu",
-          "prices": {
-            "": 5000
-          }
+          "sizes": []
         },
         {
           "id": "lazy-cake",
           "name": "Lazy Cake",
-          "prices": {
-            "": 5000
-          }
+          "sizes": []
         },
         {
           "id": "carrot-cake",
           "name": "Carrot Cake",
-          "prices": {
-            "": 8000
-          }
+          "sizes": []
         },
         {
           "id": "red-velvet",
           "name": "Red Velvet",
-          "prices": {
-            "": 8000
-          }
+          "sizes": []
         },
         {
           "id": "double-chocolate-cake",
           "name": "Double Chocolate Cake",
-          "prices": {
-            "": 7000
-          }
+          "sizes": []
         },
         {
           "id": "eclair-cake",
           "name": "Eclair Cake",
-          "prices": {
-            "": 7000
-          }
+          "sizes": []
         },
         {
           "id": "cheesecake",
           "name": "Cheesecake",
-          "prices": {
-            "": 7000
-          }
+          "sizes": []
         },
         {
           "id": "white-forest",
           "name": "White Forest",
-          "prices": {
-            "": 6000
-          }
+          "sizes": []
         },
         {
           "id": "plain-croissant",
           "name": "Plain Croissant",
-          "prices": {
-            "": 5000
-          }
+          "sizes": []
         },
         {
           "id": "cheese-croissant",
           "name": "Cheese Croissant",
-          "prices": {
-            "": 5500
-          }
+          "sizes": []
         },
         {
           "id": "chocolate-croissant",
           "name": "Chocolate Croissant",
-          "prices": {
-            "": 5500
-          }
+          "sizes": []
         },
         {
           "id": "muffins",
           "name": "Muffin",
-          "prices": {
-            "": 5500
-          }
+          "sizes": []
         },
         {
           "id": "cupcakes",
           "name": "Cupcake",
-          "prices": {
-            "": 2500
-          }
+          "sizes": []
         },
         {
           "id": "cookies",
           "name": "Cookies",
-          "prices": {
-            "": 4000
-          }
+          "sizes": []
         },
         {
           "id": "custard",
           "name": "Custard",
-          "prices": {
-            "": 5000
-          }
+          "sizes": []
         },
         {
           "id": "muhallebi",
           "name": "Muhallebi",
-          "prices": {
-            "": 5000
-          }
+          "sizes": []
         },
         {
           "id": "waffles",
           "name": "Waffles",
-          "prices": {
-            "": 7000
-          }
+          "sizes": []
         },
         {
           "id": "apple-pie",
           "name": "Apple Pie",
-          "prices": {
-            "": 6000
-          }
+          "sizes": []
         },
         {
           "id": "strawberry-pie",
           "name": "Strawberry Pie",
-          "prices": {
-            "": 6000
-          }
+          "sizes": []
         }
       ]
     },
@@ -388,16 +315,11 @@
         {
           "id": "mg-ice-cream",
           "name": "M&G Ice Cream",
-          "prices": {
-            "": 2000
-          }
+          "sizes": []
         },
         {
           "id": "magnum",
           "name": "Magnum",
-          "prices": {
-            "": 7000
-          },
           "flavours": [
             "Almond",
             "Beyaz",
@@ -408,14 +330,12 @@
             "Dubai",
             "Utopia Ahududu",
             "Double Cikolata"
-          ]
+          ],
+          "sizes": []
         },
         {
           "id": "cornetto",
           "name": "Cornetto",
-          "prices": {
-            "": 5000
-          },
           "flavours": [
             "Max Karamel",
             "Disc Karamel",
@@ -424,7 +344,8 @@
             "Kaymak",
             "Max Cikolata",
             "Chocolate Coffee"
-          ]
+          ],
+          "sizes": []
         }
       ]
     },
@@ -437,42 +358,32 @@
         {
           "id": "central-chicken",
           "name": "Chicken",
-          "prices": {
-            "": 8000
-          },
-          "noteKey": "k5Only"
+          "noteKey": "k5Only",
+          "sizes": []
         },
         {
           "id": "central-meat",
           "name": "Meat",
-          "prices": {
-            "": 8000
-          },
-          "noteKey": "k5Only"
+          "noteKey": "k5Only",
+          "sizes": []
         },
         {
           "id": "gravy",
           "name": "Gravy",
-          "prices": {
-            "": 4000
-          },
-          "noteKey": "k5Only"
+          "noteKey": "k5Only",
+          "sizes": []
         },
         {
           "id": "rice",
           "name": "Rice",
-          "prices": {
-            "": 4000
-          },
-          "noteKey": "k5Only"
+          "noteKey": "k5Only",
+          "sizes": []
         },
         {
           "id": "rice-meal",
           "name": "Rice Meal",
-          "prices": {
-            "": 15000
-          },
-          "noteKey": "k5Only"
+          "noteKey": "k5Only",
+          "sizes": []
         }
       ]
     },
@@ -485,126 +396,116 @@
         {
           "id": "espresso-single",
           "name": "Espresso Single Shot",
-          "prices": {
-            "": 6500
-          }
+          "sizes": []
         },
         {
           "id": "espresso-double",
           "name": "Espresso Double Shot",
-          "prices": {
-            "": 8000
-          }
+          "sizes": []
         },
         {
           "id": "espresso-creme",
           "name": "Espresso Creme",
-          "prices": {
-            "": 8000
-          }
+          "sizes": []
         },
         {
           "id": "macchiato-single",
           "name": "Espresso Macchiato",
-          "prices": {
-            "Small": 6500,
-            "Medium": 9000
-          }
+          "sizes": [
+            "Small",
+            "Medium"
+          ]
         },
         {
           "id": "americano",
           "name": "Caffe Americano",
-          "prices": {
-            "Small": 7000,
-            "Medium": 8000,
-            "Large": 9000
-          }
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
         },
         {
           "id": "latte",
           "name": "Caffe Latte",
-          "prices": {
-            "Small": 8000,
-            "Medium": 9000,
-            "Large": 10000
-          }
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
         },
         {
           "id": "latte-macchiato",
           "name": "Caffe Latte Macchiato",
-          "prices": {
-            "Small": 8500,
-            "Medium": 9500,
-            "Large": 10500
-          }
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
         },
         {
           "id": "cappuccino",
           "name": "Cappuccino",
-          "prices": {
-            "Small": 8000,
-            "Medium": 9000,
-            "Large": 10000
-          }
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
         },
         {
           "id": "flat-white",
           "name": "Flat White",
-          "prices": {
-            "": 9000
-          }
+          "sizes": []
         },
         {
           "id": "caramel-macchiato",
           "name": "Caramel Macchiato",
-          "prices": {
-            "Small": 8500,
-            "Medium": 9500,
-            "Large": 10500
-          }
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
         },
         {
           "id": "mocha",
           "name": "Cafe Mocha",
-          "prices": {
-            "Small": 8500,
-            "Medium": 9500,
-            "Large": 10500
-          }
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
         },
         {
           "id": "white-mocha",
           "name": "White Chocolate Mocha",
-          "prices": {
-            "Small": 8500,
-            "Medium": 9500,
-            "Large": 10500
-          }
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
         },
         {
           "id": "caramel-mocha",
           "name": "Caramel Mocha",
-          "prices": {
-            "Small": 8500,
-            "Medium": 9500,
-            "Large": 10500
-          }
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
         },
         {
           "id": "turkish-coffee",
           "name": "Turkish Coffee",
-          "prices": {
-            "": 5000
-          }
+          "sizes": []
         },
         {
           "id": "spanish-latte",
           "name": "Spanish Latte",
-          "prices": {
-            "Small": 9000,
-            "Medium": 10000,
-            "Large": 11000
-          }
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
         }
       ]
     },
@@ -617,61 +518,59 @@
         {
           "id": "espresso-freddo",
           "name": "Espresso Freddo",
-          "prices": {
-            "Small": 8000,
-            "Medium": 9000
-          }
+          "sizes": [
+            "Small",
+            "Medium"
+          ]
         },
         {
           "id": "iced-americano",
           "name": "Iced Americano",
-          "prices": {
-            "Small": 7000,
-            "Medium": 8000,
-            "Large": 9000
-          }
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
         },
         {
           "id": "shaken-espresso",
           "name": "Double Shot Iced Shaken Espresso",
-          "prices": {
-            "": 8000
-          }
+          "sizes": []
         },
         {
           "id": "iced-latte",
           "name": "Iced Latte",
-          "prices": {
-            "Small": 8000,
-            "Medium": 9000,
-            "Large": 10000
-          },
           "flavours": [
             "Caramel",
             "Hazelnut"
+          ],
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
           ]
         },
         {
           "id": "iced-mocha",
           "name": "Iced Mocha",
-          "prices": {
-            "Small": 8000,
-            "Medium": 9000,
-            "Large": 10000
-          },
           "flavours": [
             "Mocha",
             "White Mocha"
+          ],
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
           ]
         },
         {
           "id": "iced-spanish-latte",
           "name": "Iced Spanish Latte",
-          "prices": {
-            "Small": 10000,
-            "Medium": 11000,
-            "Large": 12000
-          }
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
         }
       ]
     },
@@ -684,38 +583,38 @@
         {
           "id": "milk",
           "name": "Milk",
-          "prices": {
-            "Small": 3000,
-            "Medium": 3500,
-            "Large": 4000
-          }
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
         },
         {
           "id": "classic-tea",
           "name": "Classic Tea",
-          "prices": {
-            "Small": 2000,
-            "Medium": 2500,
-            "Large": 3000
-          }
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
         },
         {
           "id": "green-tea",
           "name": "Green Tea",
-          "prices": {
-            "Small": 2500,
-            "Medium": 3000,
-            "Large": 3500
-          }
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
         },
         {
           "id": "english-breakfast-tea",
           "name": "English Breakfast Tea",
-          "prices": {
-            "Small": 3000,
-            "Medium": 3500,
-            "Large": 4000
-          }
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
         }
       ]
     },
@@ -728,20 +627,20 @@
         {
           "id": "spicy-chai",
           "name": "Spiced Chai Latte",
-          "prices": {
-            "Small": 4000,
-            "Medium": 5000,
-            "Large": 6500
-          }
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
         },
         {
           "id": "vanilla-chai",
           "name": "Vanilla Chai Latte",
-          "prices": {
-            "Small": 5000,
-            "Medium": 6500,
-            "Large": 8000
-          }
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
         }
       ]
     },
@@ -754,29 +653,29 @@
         {
           "id": "hot-chocolate",
           "name": "Hot Chocolate",
-          "prices": {
-            "Small": 8000,
-            "Medium": 9000,
-            "Large": 10000
-          }
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
         },
         {
           "id": "white-hot-chocolate",
           "name": "White Hot Chocolate",
-          "prices": {
-            "Small": 8000,
-            "Medium": 9000,
-            "Large": 10000
-          }
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
         },
         {
           "id": "dark-chocolate",
           "name": "Dark Hot Chocolate",
-          "prices": {
-            "Small": 8000,
-            "Medium": 9000,
-            "Large": 10000
-          }
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
         }
       ]
     },
@@ -789,38 +688,38 @@
         {
           "id": "chocolate-malt",
           "name": "Iced Chocolate Malt",
-          "prices": {
-            "Small": 8000,
-            "Medium": 9000,
-            "Large": 10000
-          }
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
         },
         {
           "id": "vanilla-chocolate",
           "name": "Iced Vanilla Chocolate",
-          "prices": {
-            "Small": 8000,
-            "Medium": 9000,
-            "Large": 10000
-          }
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
         },
         {
           "id": "hazelnut-chocolate",
           "name": "Iced Hazelnut Chocolate",
-          "prices": {
-            "Small": 8000,
-            "Medium": 9000,
-            "Large": 10000
-          }
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
         },
         {
           "id": "iced-dark-chocolate",
           "name": "Iced Dark Chocolate",
-          "prices": {
-            "Small": 8000,
-            "Medium": 9000,
-            "Large": 10000
-          }
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
         }
       ]
     },
@@ -833,25 +732,25 @@
         {
           "id": "creme-frappe",
           "name": "Creme Frappe",
-          "prices": {
-            "Small": 8000,
-            "Medium": 9000,
-            "Large": 10500
-          },
           "flavours": [
             "Vanilla",
             "Hazelnut",
             "Chocolate"
+          ],
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
           ]
         },
         {
           "id": "white-frappe",
           "name": "White Chocolate Creme Frappe",
-          "prices": {
-            "Small": 8000,
-            "Medium": 9000,
-            "Large": 10500
-          }
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
         }
       ]
     },
@@ -864,140 +763,106 @@
         {
           "id": "ice",
           "name": "Glass of Ice",
-          "prices": {
-            "": 500
-          }
+          "sizes": []
         },
         {
           "id": "water",
           "name": "Water",
-          "prices": {
-            "": 2000
-          }
+          "sizes": []
         },
         {
           "id": "pepsi",
           "name": "Pepsi",
-          "prices": {
-            "": 3000
-          }
+          "sizes": []
         },
         {
           "id": "pepsi-diet",
           "name": "Pepsi Diet",
-          "prices": {
-            "": 3000
-          }
+          "sizes": []
         },
         {
           "id": "7up",
           "name": "7up",
-          "prices": {
-            "": 3000
-          }
+          "sizes": []
         },
         {
           "id": "7up-diet",
           "name": "7up Diet",
-          "prices": {
-            "": 3000
-          }
+          "sizes": []
         },
         {
           "id": "miranda",
           "name": "Miranda",
-          "prices": {
-            "": 3000
-          }
+          "sizes": []
         },
         {
           "id": "mountain-dew",
           "name": "Mountain Dew",
-          "prices": {
-            "": 3000
-          }
+          "sizes": []
         },
         {
           "id": "soda-lemon",
           "name": "Soda Lemon",
-          "prices": {
-            "": 4000
-          }
+          "sizes": []
         },
         {
           "id": "soda",
           "name": "Soda",
-          "prices": {
-            "": 4000
-          }
+          "sizes": []
         },
         {
           "id": "redbull",
           "name": "RedBull",
-          "prices": {
-            "": 6500
-          }
+          "sizes": []
         },
         {
           "id": "tiger",
           "name": "Tiger Energy",
-          "prices": {
-            "": 4500
-          }
+          "sizes": []
         },
         {
           "id": "white-tiger",
           "name": "White Tiger",
-          "prices": {
-            "": 5000
-          }
+          "sizes": []
         },
         {
           "id": "freez",
           "name": "Freez",
-          "prices": {
-            "": 4000
-          },
           "flavours": [
             "Pineapple",
             "Pomegranate",
             "Mango",
             "Blue Hawai"
-          ]
+          ],
+          "sizes": []
         },
         {
           "id": "rani",
           "name": "Rani",
-          "prices": {
-            "": 3500
-          },
           "flavours": [
             "Orange",
             "Peach",
             "Grape"
-          ]
+          ],
+          "sizes": []
         },
         {
           "id": "tang",
           "name": "Tang Juice",
-          "prices": {
-            "Small": 3000,
-            "Large": 5000
-          }
+          "sizes": [
+            "Small",
+            "Large"
+          ]
         },
         {
           "id": "ayran",
           "name": "Ayran",
-          "prices": {
-            "": 3500
-          }
+          "sizes": []
         },
         {
           "id": "ginger-shot",
           "name": "Ginger Shot",
-          "prices": {
-            "": 4500
-          }
+          "sizes": []
         }
       ]
     },
@@ -1010,11 +875,11 @@
         {
           "id": "fresh-orange",
           "name": "Fresh Orange Juice",
-          "prices": {
-            "Small": 8000,
-            "Medium": 9000,
-            "Large": 10000
-          }
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
         }
       ]
     },
@@ -1027,58 +892,42 @@
         {
           "id": "virgin-mojito",
           "name": "Virgin Mojito",
-          "prices": {
-            "": 8000
-          }
+          "sizes": []
         },
         {
           "id": "non-alcoholic-sangria",
           "name": "Non-Alcoholic Sangria",
-          "prices": {
-            "": 8000
-          }
+          "sizes": []
         },
         {
           "id": "non-alcoholic-mimosa",
           "name": "Non-Alcoholic Mimosa",
-          "prices": {
-            "": 8000
-          }
+          "sizes": []
         },
         {
           "id": "virgin-pina-colada",
           "name": "Virgin Pina Colada",
-          "prices": {
-            "": 8000
-          }
+          "sizes": []
         },
         {
           "id": "frozen-virgin-strawberry-margarita",
           "name": "Frozen Virgin Strawberry Margarita",
-          "prices": {
-            "": 8000
-          }
+          "sizes": []
         },
         {
           "id": "orange-moscow-mule",
           "name": "Orange Moscow Mule",
-          "prices": {
-            "": 8000
-          }
+          "sizes": []
         },
         {
           "id": "sunrise-orange",
           "name": "Sunrise Orange",
-          "prices": {
-            "": 8000
-          }
+          "sizes": []
         },
         {
           "id": "blue-angel",
           "name": "Blue Angel",
-          "prices": {
-            "": 8000
-          }
+          "sizes": []
         }
       ]
     },
@@ -1091,23 +940,21 @@
         {
           "id": "heineken-draught-35",
           "name": "Heineken Draught",
-          "prices": {
-            "35 cl": 9500
-          }
+          "sizes": [
+            "35 cl"
+          ]
         },
         {
           "id": "draft-beer-1",
           "name": "Heineken Draught",
-          "prices": {
-            "50 cl": 15000
-          }
+          "sizes": [
+            "50 cl"
+          ]
         },
         {
           "id": "draft-krombacher",
           "name": "Draft Krombacher",
-          "prices": {
-            "": 15500
-          }
+          "sizes": []
         }
       ]
     },
@@ -1120,107 +967,79 @@
         {
           "id": "beer-2",
           "name": "Paulaner Weizen",
-          "prices": {
-            "": 9500
-          }
+          "sizes": []
         },
         {
           "id": "beer-3",
           "name": "Paulaner Hell",
-          "prices": {
-            "": 9500
-          }
+          "sizes": []
         },
         {
           "id": "beer-1",
           "name": "Heineken Bottle",
-          "prices": {
-            "": 9500
-          }
+          "sizes": []
         },
         {
           "id": "beer-4",
           "name": "Corona",
-          "prices": {
-            "": 9500
-          }
+          "sizes": []
         },
         {
           "id": "sol",
           "name": "Sol",
-          "prices": {
-            "": 9500
-          }
+          "sizes": []
         },
         {
           "id": "budweiser",
           "name": "Budweiser",
-          "prices": {
-            "": 9500
-          }
+          "sizes": []
         },
         {
           "id": "almaza",
           "name": "Almaza",
-          "prices": {
-            "": 9500
-          }
+          "sizes": []
         },
         {
           "id": "beer-5",
           "name": "Efes",
-          "prices": {
-            "": 9500
-          }
+          "sizes": []
         },
         {
           "id": "beer-6",
           "name": "Carlsberg",
-          "prices": {
-            "": 9500
-          }
+          "sizes": []
         },
         {
           "id": "beer-7",
           "name": "Tuborg",
-          "prices": {
-            "": 9500
-          }
+          "sizes": []
         },
         {
           "id": "miller",
           "name": "Miller",
-          "prices": {
-            "": 9500
-          }
+          "sizes": []
         },
         {
           "id": "beer-8",
           "name": "Krombacher Can",
-          "prices": {
-            "": 9500
-          }
+          "sizes": []
         },
         {
           "id": "tuborg-green",
           "name": "Tuborg Green",
-          "prices": {
-            "": 9500
-          }
+          "sizes": []
         },
         {
           "id": "tuborg-bottle",
           "name": "Tuborg Bottle",
-          "prices": {
-            "": 9500
-          }
+          "sizes": []
         },
         {
           "id": "krombacher-pils",
           "name": "Krombacher Pils",
-          "prices": {
-            "500 ml": 13500
-          }
+          "sizes": [
+            "500 ml"
+          ]
         }
       ]
     },
@@ -1233,156 +1052,112 @@
         {
           "id": "mojito",
           "name": "Mojito",
-          "prices": {
-            "": 10000
-          }
+          "sizes": []
         },
         {
           "id": "cocktails-6",
           "name": "Margarita",
-          "prices": {
-            "": 10000
-          }
+          "sizes": []
         },
         {
           "id": "long-island-iced-tea",
           "name": "Long Island Iced Tea",
-          "prices": {
-            "": 12000
-          }
+          "sizes": []
         },
         {
           "id": "cocktails-8",
           "name": "Pina Colada",
-          "prices": {
-            "": 10000
-          }
+          "sizes": []
         },
         {
           "id": "b52-shot",
           "name": "B52 Shot",
-          "prices": {
-            "": 11000
-          }
+          "sizes": []
         },
         {
           "id": "cocktails-3",
           "name": "Jagerbomb",
-          "prices": {
-            "": 18000
-          }
+          "sizes": []
         },
         {
           "id": "screwdriver",
           "name": "Screwdriver",
-          "prices": {
-            "": 13500
-          }
+          "sizes": []
         },
         {
           "id": "espresso-martini",
           "name": "Espresso Martini",
-          "prices": {
-            "": 13500
-          }
+          "sizes": []
         },
         {
           "id": "frozen-margarita",
           "name": "Frozen Margarita",
-          "prices": {
-            "": 13500
-          }
+          "sizes": []
         },
         {
           "id": "irish-coffee",
           "name": "Irish Coffee",
-          "prices": {
-            "": 13500
-          }
+          "sizes": []
         },
         {
           "id": "manhattan",
           "name": "Manhattan",
-          "prices": {
-            "": 13500
-          }
+          "sizes": []
         },
         {
           "id": "sex-on-the-beach",
           "name": "Sex On The Beach",
-          "prices": {
-            "": 13500
-          }
+          "sizes": []
         },
         {
           "id": "blue-kamikaze",
           "name": "Blue Kamikaze",
-          "prices": {
-            "": 13500
-          }
+          "sizes": []
         },
         {
           "id": "bay-breeze",
           "name": "Bay Breeze",
-          "prices": {
-            "": 13500
-          }
+          "sizes": []
         },
         {
           "id": "god-father",
           "name": "God Father",
-          "prices": {
-            "": 13500
-          }
+          "sizes": []
         },
         {
           "id": "cocktails-1",
           "name": "Gin & Tonic",
-          "prices": {
-            "": 17500
-          }
+          "sizes": []
         },
         {
           "id": "jameson-ginger-ale",
           "name": "Jameson Ginger Ale",
-          "prices": {
-            "": 17500
-          }
+          "sizes": []
         },
         {
           "id": "cocktails-5",
           "name": "Jack & Coke",
-          "prices": {
-            "": 17500
-          }
+          "sizes": []
         },
         {
           "id": "cocktails-9",
           "name": "Daiquiri",
-          "prices": {
-            "": 17500
-          }
+          "sizes": []
         },
         {
           "id": "cocktails-10",
           "name": "Moscow Mule",
-          "prices": {
-            "": 17500
-          }
+          "sizes": []
         },
         {
           "id": "cocktails-7",
           "name": "Whiskey Sour",
-          "prices": {
-            "": 17500
-          }
+          "sizes": []
         },
         {
           "id": "cocktails-2",
           "name": "Vodka & Juice",
-          "prices": {
-            "": 17500
-          }
+          "sizes": []
         }
       ]
     },
@@ -1395,65 +1170,47 @@
         {
           "id": "blended-scotch-1",
           "name": "Ballantines Finest",
-          "prices": {
-            "": 13000
-          }
+          "sizes": []
         },
         {
           "id": "blended-scotch-9",
           "name": "Dimple",
-          "prices": {
-            "": 13500
-          }
+          "sizes": []
         },
         {
           "id": "blended-scotch-2",
           "name": "Chivas Regal 12 YO",
-          "prices": {
-            "": 14500
-          }
+          "sizes": []
         },
         {
           "id": "blended-scotch-6",
           "name": "Chivas Regal 18 YO",
-          "prices": {
-            "": 19000
-          }
+          "sizes": []
         },
         {
           "id": "blended-scotch-7",
           "name": "JW Red Label",
-          "prices": {
-            "": 14500
-          }
+          "sizes": []
         },
         {
           "id": "blended-scotch-8",
           "name": "JW Black Label",
-          "prices": {
-            "": 15500
-          }
+          "sizes": []
         },
         {
           "id": "blended-scotch-3",
           "name": "Chivas 13 YO Sherry Cask",
-          "prices": {
-            "": 16000
-          }
+          "sizes": []
         },
         {
           "id": "blended-scotch-4",
           "name": "Chivas 13 YO Tequila Cask",
-          "prices": {
-            "": 16000
-          }
+          "sizes": []
         },
         {
           "id": "blended-scotch-5",
           "name": "Chivas 15 YO Cognac Cask",
-          "prices": {
-            "": 16000
-          }
+          "sizes": []
         }
       ]
     },
@@ -1466,37 +1223,27 @@
         {
           "id": "single-malt-1",
           "name": "Glenlivet Founder Reserve",
-          "prices": {
-            "": 19000
-          }
+          "sizes": []
         },
         {
           "id": "single-malt-2",
           "name": "Glenmorangie 10 YO",
-          "prices": {
-            "": 14500
-          }
+          "sizes": []
         },
         {
           "id": "single-malt-3",
           "name": "Glenmorangie 14 YO Sherry Cask",
-          "prices": {
-            "": 16000
-          }
+          "sizes": []
         },
         {
           "id": "single-malt-4",
           "name": "Aberlour 12 YO",
-          "prices": {
-            "": 18000
-          }
+          "sizes": []
         },
         {
           "id": "single-malt-5",
           "name": "Macallan 12 YO",
-          "prices": {
-            "": 19000
-          }
+          "sizes": []
         }
       ]
     },
@@ -1509,44 +1256,32 @@
         {
           "id": "american-whiskey-1",
           "name": "Jack Daniels No. 7",
-          "prices": {
-            "": 14500
-          }
+          "sizes": []
         },
         {
           "id": "american-whiskey-2",
           "name": "Jack Daniels Honey",
-          "prices": {
-            "": 14500
-          }
+          "sizes": []
         },
         {
           "id": "american-whiskey-3",
           "name": "Gentleman Jack",
-          "prices": {
-            "": 15500
-          }
+          "sizes": []
         },
         {
           "id": "american-whiskey-4",
           "name": "Jack Daniels Single Barrel",
-          "prices": {
-            "": 16500
-          }
+          "sizes": []
         },
         {
           "id": "american-whiskey-5",
           "name": "Woodford Reserve",
-          "prices": {
-            "": 15000
-          }
+          "sizes": []
         },
         {
           "id": "american-whiskey-6",
           "name": "Makers Mark",
-          "prices": {
-            "": 15500
-          }
+          "sizes": []
         }
       ]
     },
@@ -1559,30 +1294,22 @@
         {
           "id": "irish-whiskey-1",
           "name": "Jameson",
-          "prices": {
-            "": 14500
-          }
+          "sizes": []
         },
         {
           "id": "irish-whiskey-2",
           "name": "Jameson Caskmate",
-          "prices": {
-            "": 13500
-          }
+          "sizes": []
         },
         {
           "id": "irish-whiskey-3",
           "name": "Jameson Black Barrel",
-          "prices": {
-            "": 15000
-          }
+          "sizes": []
         },
         {
           "id": "irish-whiskey-4",
           "name": "Jameson Crested",
-          "prices": {
-            "": 14000
-          }
+          "sizes": []
         }
       ]
     },
@@ -1595,72 +1322,52 @@
         {
           "id": "liqueur-7",
           "name": "Martini",
-          "prices": {
-            "": 10000
-          }
+          "sizes": []
         },
         {
           "id": "liqueur-1",
           "name": "Malibu",
-          "prices": {
-            "": 8500
-          }
+          "sizes": []
         },
         {
           "id": "liqueur-2",
           "name": "Kahlua",
-          "prices": {
-            "": 10000
-          }
+          "sizes": []
         },
         {
           "id": "liqueur-4",
           "name": "Grand Marnier",
-          "prices": {
-            "": 19000
-          }
+          "sizes": []
         },
         {
           "id": "raki-normal",
           "name": "Raki Normal",
-          "prices": {
-            "": 12000
-          }
+          "sizes": []
         },
         {
           "id": "tekirdag",
           "name": "Tekirdag",
-          "prices": {
-            "": 13500
-          }
+          "sizes": []
         },
         {
           "id": "liqueur-3",
           "name": "Baileys",
-          "prices": {
-            "": 8500
-          }
+          "sizes": []
         },
         {
           "id": "liqueur-8",
           "name": "Campari",
-          "prices": {
-            "": 10000
-          }
+          "sizes": []
         },
         {
           "id": "liqueur-5",
           "name": "Jagermeister",
-          "prices": {
-            "": 13500
-          }
+          "sizes": []
         },
         {
           "id": "kahlua-double",
           "name": "Kahlua Double",
-          "prices": {
-            "": 13500
-          }
+          "sizes": []
         }
       ]
     },
@@ -1673,30 +1380,22 @@
         {
           "id": "vodka-3",
           "name": "Absolut",
-          "prices": {
-            "": 14000
-          }
+          "sizes": []
         },
         {
           "id": "vodka-2",
           "name": "Belvedere",
-          "prices": {
-            "": 15500
-          }
+          "sizes": []
         },
         {
           "id": "vodka-4",
           "name": "Grey Goose",
-          "prices": {
-            "": 15500
-          }
+          "sizes": []
         },
         {
           "id": "vodka-1",
           "name": "Finlandia",
-          "prices": {
-            "": 13500
-          }
+          "sizes": []
         }
       ]
     },
@@ -1709,30 +1408,22 @@
         {
           "id": "gin-1",
           "name": "Beefeater",
-          "prices": {
-            "": 13500
-          }
+          "sizes": []
         },
         {
           "id": "gin-4",
           "name": "Bombay Sapphire",
-          "prices": {
-            "": 14500
-          }
+          "sizes": []
         },
         {
           "id": "gin-3",
           "name": "Malfy Italian",
-          "prices": {
-            "": 15000
-          }
+          "sizes": []
         },
         {
           "id": "gin-2",
           "name": "Gin Mare",
-          "prices": {
-            "": 15500
-          }
+          "sizes": []
         }
       ]
     },
@@ -1745,51 +1436,37 @@
         {
           "id": "rum-1",
           "name": "Havana Club 3 Year",
-          "prices": {
-            "": 13500
-          }
+          "sizes": []
         },
         {
           "id": "rum-2",
           "name": "Havana Club 7 Year",
-          "prices": {
-            "": 11000
-          }
+          "sizes": []
         },
         {
           "id": "bacardi-black",
           "name": "Bacardi Black",
-          "prices": {
-            "": 11000
-          }
+          "sizes": []
         },
         {
           "id": "rum-3",
           "name": "Bacardi Carta Blanca",
-          "prices": {
-            "": 14500
-          }
+          "sizes": []
         },
         {
           "id": "captain-morgan",
           "name": "Captain Morgan",
-          "prices": {
-            "": 13500
-          }
+          "sizes": []
         },
         {
           "id": "captain-morgan-spice",
           "name": "Captain Morgan Spice",
-          "prices": {
-            "": 13500
-          }
+          "sizes": []
         },
         {
           "id": "rum-4",
           "name": "Bacardi Dark",
-          "prices": {
-            "": 14500
-          }
+          "sizes": []
         }
       ]
     },
@@ -1802,65 +1479,47 @@
         {
           "id": "tequila-4",
           "name": "Olmeca Silver",
-          "prices": {
-            "": 13500
-          }
+          "sizes": []
         },
         {
           "id": "tequila-3",
           "name": "Patron Reposado",
-          "prices": {
-            "": 16500
-          }
+          "sizes": []
         },
         {
           "id": "olmeca-gold",
           "name": "Olmeca Gold",
-          "prices": {
-            "": 17500
-          }
+          "sizes": []
         },
         {
           "id": "patron",
           "name": "Patron",
-          "prices": {
-            "": 10000
-          }
+          "sizes": []
         },
         {
           "id": "tequila-2",
           "name": "El Jimador Reposado",
-          "prices": {
-            "": 13500
-          }
+          "sizes": []
         },
         {
           "id": "camino-gold",
           "name": "Camino Gold",
-          "prices": {
-            "": 11000
-          }
+          "sizes": []
         },
         {
           "id": "tequila-5",
           "name": "1800 Tequila",
-          "prices": {
-            "": 19000
-          }
+          "sizes": []
         },
         {
           "id": "tequila-1",
           "name": "Herradura Plata",
-          "prices": {
-            "": 14500
-          }
+          "sizes": []
         },
         {
           "id": "don-julio-blanco",
           "name": "Don Julio Blanco",
-          "prices": {
-            "": 19000
-          }
+          "sizes": []
         }
       ]
     },
@@ -1873,23 +1532,17 @@
         {
           "id": "cognac-2",
           "name": "Hennessy VSOP",
-          "prices": {
-            "": 25000
-          }
+          "sizes": []
         },
         {
           "id": "cognac-1",
           "name": "Hennessy VS",
-          "prices": {
-            "": 19000
-          }
+          "sizes": []
         },
         {
           "id": "cognac-3",
           "name": "Martell VS",
-          "prices": {
-            "": 19000
-          }
+          "sizes": []
         }
       ]
     },
@@ -1902,23 +1555,17 @@
         {
           "id": "wine-1",
           "name": "Jacobs Creek Red",
-          "prices": {
-            "": 11500
-          }
+          "sizes": []
         },
         {
           "id": "wine-2",
           "name": "Jacobs Creek White",
-          "prices": {
-            "": 11500
-          }
+          "sizes": []
         },
         {
           "id": "rose",
           "name": "Rose",
-          "prices": {
-            "": 11500
-          }
+          "sizes": []
         }
       ]
     },
@@ -1931,26 +1578,24 @@
         {
           "id": "gift-candy-box",
           "name": "Gift Candy Box",
-          "prices": {
-            "": 10000
-          }
+          "sizes": []
         },
         {
           "id": "flower",
           "name": "Flower",
-          "prices": {
-            "Medium": 5000,
-            "Large": 12000
-          }
+          "sizes": [
+            "Medium",
+            "Large"
+          ]
         },
         {
           "id": "teddy-bear",
           "name": "Teddy Bear",
-          "prices": {
-            "Small": 7000,
-            "Medium": 15000,
-            "Large": 25000
-          }
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
         }
       ]
     },
@@ -1963,26 +1608,26 @@
         {
           "id": "man-al-sama",
           "name": "Man Al Sama Pistachio",
-          "prices": {
-            "Small": 35000,
-            "Medium": 57500
-          }
+          "sizes": [
+            "Small",
+            "Medium"
+          ]
         },
         {
           "id": "kurda-nuts",
           "name": "Kurda Nuts",
-          "prices": {
-            "Small": 7000,
-            "Large": 14000
-          }
+          "sizes": [
+            "Small",
+            "Large"
+          ]
         },
         {
           "id": "baklava",
           "name": "Baklava",
-          "prices": {
-            "Small": 40000,
-            "Medium": 65000
-          }
+          "sizes": [
+            "Small",
+            "Medium"
+          ]
         }
       ]
     },
@@ -1995,187 +1640,143 @@
         {
           "id": "al-amira-regular",
           "name": "Al Amira Regular",
-          "prices": {
-            "Small": 2500,
-            "Medium": 4500,
-            "Large": 7000
-          }
+          "sizes": [
+            "Small",
+            "Medium",
+            "Large"
+          ]
         },
         {
           "id": "al-amira-extra",
           "name": "Al Amira Extra",
-          "prices": {
-            "Large": 8000
-          }
+          "sizes": [
+            "Large"
+          ]
         },
         {
           "id": "local-biscuits",
           "name": "Local Biscuits",
-          "prices": {
-            "": 1000
-          }
+          "sizes": []
         },
         {
           "id": "chips-normal",
           "name": "Chips Normal",
-          "prices": {
-            "": 1000
-          }
+          "sizes": []
         },
         {
           "id": "lays",
           "name": "Lays Chips",
-          "prices": {
-            "Small": 1500,
-            "Medium": 2500
-          }
+          "sizes": [
+            "Small",
+            "Medium"
+          ]
         },
         {
           "id": "doritos",
           "name": "Doritos",
-          "prices": {
-            "": 2500
-          }
+          "sizes": []
         },
         {
           "id": "pringles",
           "name": "Pringles",
-          "prices": {
-            "Small": 3000
-          }
+          "sizes": [
+            "Small"
+          ]
         },
         {
           "id": "popcorn",
           "name": "Popcorn",
-          "prices": {
-            "": 3000
-          }
+          "sizes": []
         },
         {
           "id": "pop-me",
           "name": "Pop me",
-          "prices": {
-            "": 3000
-          }
+          "sizes": []
         },
         {
           "id": "twix",
           "name": "Twix",
-          "prices": {
-            "": 3000
-          }
+          "sizes": []
         },
         {
           "id": "snickers",
           "name": "Snickers",
-          "prices": {
-            "": 3000
-          }
+          "sizes": []
         },
         {
           "id": "bounty",
           "name": "Bounty",
-          "prices": {
-            "": 3000
-          }
+          "sizes": []
         },
         {
           "id": "lotus",
           "name": "Lotus",
-          "prices": {
-            "": 3500
-          }
+          "sizes": []
         },
         {
           "id": "nutella-sticks",
           "name": "Nutella Sticks",
-          "prices": {
-            "": 3500
-          }
+          "sizes": []
         },
         {
           "id": "mentos",
           "name": "Mentos",
-          "prices": {
-            "": 3000
-          }
+          "sizes": []
         },
         {
           "id": "mentos-bottle",
           "name": "Mentos Bottle",
-          "prices": {
-            "": 5000
-          }
+          "sizes": []
         },
         {
           "id": "castania-regular",
           "name": "Castania Regular Mix",
-          "prices": {
-            "": 7000
-          }
+          "sizes": []
         },
         {
           "id": "klecha-baklava-mix",
           "name": "Klecha / Baklava Mix",
-          "prices": {
-            "": 9000
-          }
+          "sizes": []
         },
         {
           "id": "nuts-dia-bar",
           "name": "Nuts Dia Bar",
-          "prices": {
-            "": 3000
-          }
+          "sizes": []
         },
         {
           "id": "low-carb-bar",
           "name": "Low Carb Oat Bar",
-          "prices": {
-            "": 3000
-          }
+          "sizes": []
         },
         {
           "id": "tahini-bar",
           "name": "Tahini Oat Bar",
-          "prices": {
-            "": 3000
-          }
+          "sizes": []
         },
         {
           "id": "oat-bar",
           "name": "Oat Bar",
-          "prices": {
-            "": 2000
-          }
+          "sizes": []
         },
         {
           "id": "dates-bar",
           "name": "Dates Oat Bar",
-          "prices": {
-            "": 2000
-          }
+          "sizes": []
         },
         {
           "id": "chocolate-bar",
           "name": "Chocolate Oat Bar",
-          "prices": {
-            "": 3000
-          }
+          "sizes": []
         },
         {
           "id": "clean-keto-bar",
           "name": "Clean Keto Oat Bar",
-          "prices": {
-            "": 5000
-          }
+          "sizes": []
         },
         {
           "id": "protein-bar",
           "name": "Protein Oat Bar",
-          "prices": {
-            "": 5000
-          }
+          "sizes": []
         }
       ]
     },
@@ -2188,20 +1789,14 @@
         {
           "id": "mobile-card",
           "name": "Mobile Card",
-          "prices": {
-            "": null
-          },
-          "priceType": "variable",
-          "noteKey": "variableAmount"
+          "noteKey": "variableAmount",
+          "sizes": []
         },
         {
           "id": "e-sim",
           "name": "E-Sim",
-          "prices": {
-            "": null
-          },
-          "priceType": "variable",
-          "noteKey": "variableAmount"
+          "noteKey": "variableAmount",
+          "sizes": []
         }
       ]
     }

@@ -8,7 +8,7 @@
  <meta property="og:type" content="website"><meta property="og:title" content="{{title}}"><meta property="og:description" content="{{description}}"><meta property="og:url" content="{{URL}}"><meta property="og:image" content="https://www.kurda.com/menu/assets/menu-social.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">
  <link rel="icon" href="/menu/assets/favicon.svg" type="image/svg+xml">
  <link rel="preload" href="/assets/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
- <link rel="stylesheet" href="/menu/menu.css?v=6"><script defer src="/menu/menu.js?v=6"></script>
+ <link rel="stylesheet" href="/menu/menu.css?v=7"><script defer src="/menu/menu.js?v=7"></script>
  <script type="application/ld+json">{{SCHEMA}}</script>
 </head>
 <body id="top">
@@ -30,8 +30,8 @@
   </div>
   <div class="wrap menu-body">
    <nav class="category-gallery" aria-label="{{browse}}">{{CATEGORIES}}</nav>
-   <div class="menu-meta"><p id="result-count" role="status" aria-live="polite">{{TOTAL}} {{items}}</p><p class="currency-note">{{prices}}</p></div>
-   <div class="filter-row js-only"><label><span class="sr-only">{{browse}}</span><select id="category-select">{{CATEGORY_OPTIONS}}</select></label><label><span class="sr-only">{{sort}}</span><select id="sort"><option value="menu">{{menuOrder}}</option><option value="low">{{low}}</option><option value="high">{{high}}</option><option value="az">{{az}}</option></select></label></div>
+   <div class="menu-meta"><p id="result-count" role="status" aria-live="polite">{{TOTAL}} {{items}}</p><p class="cashier-note">{{cashierNote}}</p></div>
+   <div class="filter-row js-only"><label><span class="sr-only">{{browse}}</span><select id="category-select">{{CATEGORY_OPTIONS}}</select></label><label><span class="sr-only">{{sort}}</span><select id="sort"><option value="menu">{{menuOrder}}</option><option value="az">{{az}}</option></select></label></div>
    <p id="picks-note" hidden>{{pickNote}}</p>
    <div id="menu-sections">{{MENU}}</div>
    <div id="empty" class="empty" hidden><span aria-hidden="true">♡</span><h2>{{empty}}</h2><p>{{emptyHint}}</p><button id="reset" type="button">{{reset}}</button></div>
